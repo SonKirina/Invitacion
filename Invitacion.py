@@ -215,7 +215,7 @@ with col1:
         <h3>⛪ Ceremonia Religiosa</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
         <p><b>Hora:</b> 14:00 hrs</p>
-        <p><b>Lugar:</b> Parroquia de Nuestra Señora del Carmen</p>
+        <p><b>Lugar:</b> Parroquia San Gabriel</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
         <a href="https://www.google.com/maps/place/Parroquia+de+San+Gabriel/@24.8175739,-107.3979117,16.5z/data=!4m6!3m5!1s0x86bcda0885555555:0xe6e996b30a535946!8m2!3d24.8181119!4d-107.4001306!16s%2Fg%2F11cs9_hkf0?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Misa</p>
@@ -229,7 +229,7 @@ with col2:
         <h3>🎉 Recepción & Fiesta</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
         <p><b>Hora:</b> 19:00 hrs</p>
-        <p><b>Lugar:</b> Salón Los Girasoles</p>
+        <p><b>Lugar:</b> Salón Metropolitan: Piso 1</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
         <a href="https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7943447,-107.4047708,16.67z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Fiesta</p>
