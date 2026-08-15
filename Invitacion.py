@@ -132,7 +132,7 @@ if novios_b64:
 else:
     st.image("novios.jpg", use_container_width=True)
 
-st.markdown("<h1>María & Carlos</h1>", unsafe_allow_html=True)
+st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #7a6a53;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
 
 st.markdown("""
