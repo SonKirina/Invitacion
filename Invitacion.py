@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
+import base64
 
 # Configuración de la página
 st.set_page_config(
@@ -8,30 +9,38 @@ st.set_page_config(
     page_icon="💍", 
     layout="centered"
 )
-st.image("kirina.jpeg", caption="María & Carlos")
-# URL de la imagen de fondo (puedes cambiar esta URL por la de tu foto favorita o una local)
 
+# Función para convertir imágenes locales a Base64 y usarlas en CSS/HTML
+def get_image_base64(file_path):
+    try:
+        with open(file_path, "rb") as image_file:
+            encoded = base64.b64encode(image_file.read()).decode()
+        return f"data:image/jpeg;base64,{encoded}"
+    except FileNotFoundError:
+        return ""
 
-# Estilo visual avanzado con CSS (Romántico, Elegante y Adaptable)
+# Carga de imágenes locales
+fondo_b64 = get_image_base64("Kirina.jpeg")
+novios_b64 = get_image_base64("Kirina.jpeg")
+
+# Estilo visual avanzado con CSS
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
-    /* Fondo principal con overlay oscuro suave para legibilidad */
+    /* Fondo de pantalla usando la foto local fondo.jpg con overlay transparente */
     [data-testid="stAppViewContainer"] {{
-        background-image: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("{URL_FONDO}");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url("{fondo_b64}");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }}
 
-    /* Ocultar encabezado por defecto de Streamlit */
     [data-testid="stHeader"] {{
         background-color: rgba(0,0,0,0);
     }}
 
-    /* Fuentes globales */
     h1, h2, h3 {{
         color: #6b5b45 !important;
         font-family: 'Cormorant Garamond', serif !important;
@@ -50,9 +59,9 @@ st.markdown(f"""
         color: #4a4a4a;
     }}
 
-    /* Tarjetas tipo cristal elegante (Glassmorphism) */
+    /* Tarjetas estilo cristal (Glassmorphism) */
     .card {{
-        background: rgba(255, 255, 255, 0.88);
+        background: rgba(255, 255, 255, 0.90);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(212, 175, 55, 0.3);
@@ -63,11 +72,11 @@ st.markdown(f"""
         text-align: center;
     }}
 
-    /* Foto de perfil / portada de pareja */
+    /* Foto circular principal de los novios */
     .hero-photo {{
         width: 100%;
-        max-width: 320px;
-        height: 320px;
+        max-width: 300px;
+        height: 300px;
         object-fit: cover;
         border-radius: 50%;
         border: 5px solid #ffffff;
@@ -76,19 +85,17 @@ st.markdown(f"""
         margin: 0 auto 20px auto;
     }}
 
-    /* Estilo para contadores de fecha */
     .countdown-box {{
         background: #8c7853;
         color: white !important;
         padding: 12px 20px;
         border-radius: 30px;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         font-weight: 600;
         display: inline-block;
         box-shadow: 0 4px 12px rgba(140, 120, 83, 0.3);
     }}
 
-    /* Botones personalizados */
     .stButton>button {{
         background: linear-gradient(135deg, #d4af37 0%, #b89228 100%);
         color: white !important;
@@ -107,7 +114,6 @@ st.markdown(f"""
         transform: translateY(-2px);
     }}
 
-    /* Separadores decorativos */
     .divider {{
         text-align: center;
         margin: 25px 0;
@@ -117,11 +123,14 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# ----------------- HERO SECTION -----------------
+# ----------------- ENCABEZADO -----------------
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Foto Principal de los Novios
-st.markdown(f'<img src="{URL_FOTO_PAREJA}" class="hero-photo" alt="María & Carlos">', unsafe_allow_html=True)
+# Muestra la foto de novios local
+if novios_b64:
+    st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="María & Carlos">', unsafe_allow_html=True)
+else:
+    st.image("novios.jpg", use_container_width=True)
 
 st.markdown("<h1>María & Carlos</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #7a6a53;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
@@ -129,7 +138,7 @@ st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic
 st.markdown("""
 <div class="card">
     <p style="font-size: 1rem; line-height: 1.6; margin: 0;">
-        Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más queremos los hace inolvidables. 
+        Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más queremos los hace aún más especiales. 
         Queremos que seas parte de esta gran celebración.
     </p>
 </div>
@@ -165,7 +174,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("""
     <div class="card">
-        <h3>📅 Ceremonia & Fiesta</h3>
+        <h3>📅 Fecha & Hora</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">15 de Diciembre de 2026</p>
         <p>Recepción: 17:00 hrs</p>
         <p>Misa: 18:00 hrs</p>
@@ -189,25 +198,34 @@ st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>📋 Itinerario</h2>", unsafe_allow_html=True)
 
 st.markdown("""
-<div class="card" style="text-align: left; padding-left: 40px;">
+<div class="card" style="text-align: left; padding-left: 30px;">
     <p><b>17:00 hrs</b> — 🥂 Recepción y Cóctel de Bienvenida</p>
     <p><b>18:00 hrs</b> — 💍 Ceremonia Religiosa / Civil</p>
-    <p><b>19:30 hrs</b> — 🍽️ Banquete Real y Brindis</p>
+    <p><b>19:30 hrs</b> — 🍽️ Banquete y Brindis</p>
     <p><b>21:00 hrs</b> — 💃 ¡Apertura de Pista y Fiesta!</p>
 </div>
 """, unsafe_allow_html=True)
 
-# ----------------- GALERÍA DE FOTOS -----------------
+# ----------------- GALERÍA DE FOTOS LOCALES -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>📸 Nuestra Historia</h2>", unsafe_allow_html=True)
 
 g_col1, g_col2, g_col3 = st.columns(3)
 with g_col1:
-    st.image("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=400&auto=format&fit=crop", use_container_width=True, caption="Nuestra Promesa")
+    try:
+        st.image("foto1.jpg", use_container_width=True)
+    except:
+        st.write("📷 Foto 1")
 with g_col2:
-    st.image("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=400&auto=format&fit=crop", use_container_width=True, caption="Juntos Siempre")
+    try:
+        st.image("foto2.jpg", use_container_width=True)
+    except:
+        st.write("📷 Foto 2")
 with g_col3:
-    st.image("https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=400&auto=format&fit=crop", use_container_width=True, caption="El Comienzo")
+    try:
+        st.image("foto3.jpg", use_container_width=True)
+    except:
+        st.write("📷 Foto 3")
 
 # ----------------- NOTAS IMPORTANTES -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
@@ -278,7 +296,7 @@ with st.expander("🔐 Panel de Administración (Novios)"):
             
             csv = df_asistentes.to_csv(index=False).encode('utf-8')
             st.download_button(
-                label="📥 Descargar lista en CSV / Excel",
+                label="📥 Descargar lista en CSV",
                 data=csv,
                 file_name='asistentes_boda_maria_carlos.csv',
                 mime='text/csv',
@@ -287,14 +305,3 @@ with st.expander("🔐 Panel de Administración (Novios)"):
             st.info("Aún no hay confirmaciones registradas.")
     elif pin != "":
         st.error("PIN incorrecto.")
-```eof
-
-He mejorado el diseño de la invitación en Streamlit. Estas son las principales novedades implementadas:
-
-1. **Foto de fondo con capa protectora**: Agregué una foto de fondo romántica fija que no distrae la lectura gracias a un degradado semi-transparente.
-2. **Foto principal circular y Galería**: Incluí una foto central para los novios y un bloque de galería con 3 imágenes para mostrar momentos juntos.
-3. **Tipografía elegante**: Se cargaron las fuentes de Google Fonts (*Cormorant Garamond* para títulos y *Montserrat* para textos).
-4. **Tarjetas de Cristal (Glassmorphism)**: Todo el contenido está agrupado en tarjetas blancas translúcidas con bordes dorados suaves y sombras elegantes.
-5. **Enlace a Google Maps e Itinerario visual**: Añadí enlace interactivo para la ubicación y un diseño ordenado para los tiempos del evento.
-
-Para usar tus propias fotos, únicamente reemplaza los enlaces `URL_FONDO`, `URL_FOTO_PAREJA` o las fotos de la galería por las URLs de tus imágenes o por imágenes alojadas en tu carpeta local. ¡Espero que les encante!
