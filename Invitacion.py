@@ -213,7 +213,7 @@ st.markdown("<h2>📸 Nuestra Historia</h2>", unsafe_allow_html=True)
 g_col1, g_col2, g_col3 = st.columns(3)
 with g_col1:
     try:
-        st.image("foto1.jpg", use_container_width=True)
+        st.image("Kirina.jpeg", use_container_width=True)
     except:
         st.write("📷 Foto 1")
 with g_col2:
