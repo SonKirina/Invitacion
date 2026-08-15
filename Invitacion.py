@@ -46,7 +46,7 @@ st.markdown("""
 
 # Encabezado Principal
 st.markdown("<h1>💍 ¡Nos Casamos! 💍</h1>", unsafe_allow_html=True)
-st.write("### María & Carlos")
+st.write("### Ismael & Elizabeth")
 st.markdown("<p style='text-align: center; color: #555;'>Tenemos el honor de invitarte a celebrar el día más importante de nuestras vidas.</p>", unsafe_allow_html=True)
 
 st.markdown("---")
