@@ -8,7 +8,7 @@ st.set_page_config(
     page_icon="💍", 
     layout="centered"
 )
-st.image("kirina.jpg", caption="María & Carlos")
+st.image("kirina.jpeg", caption="María & Carlos")
 # URL de la imagen de fondo (puedes cambiar esta URL por la de tu foto favorita o una local)
 
 
