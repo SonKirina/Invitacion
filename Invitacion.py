@@ -10,7 +10,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# Función para convertir imágenes locales a Base64 y usarlas en CSS/HTML
+# Función para convertir imágenes locales a Base64
 def get_image_base64(file_path):
     try:
         with open(file_path, "rb") as image_file:
@@ -23,7 +23,7 @@ def get_image_base64(file_path):
 fondo_b64 = get_image_base64("Kirina.jpeg")
 novios_b64 = get_image_base64("Kirina.jpeg")
 
-# Estilo visual avanzado con CSS
+# Estilo visual avanzado con CSS y EFECTO DE PÉTALOS CAYENDO
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
@@ -120,13 +120,51 @@ st.markdown(f"""
         color: #d4af37;
         font-size: 1.5rem;
     }}
+
+    /* --- ANIMACIÓN DE PÉTALOS CAYENDO --- */
+    .petal {{
+        position: fixed;
+        top: -10px;
+        pointer-events: none;
+        z-index: 9999;
+        animation: fall linear infinite;
+        font-size: 1.2rem;
+        user-select: none;
+    }}
+
+    @keyframes fall {{
+        0% {{
+            opacity: 1;
+            top: -10px;
+            transform: translateX(0) rotate(0deg);
+        }}
+        100% {{
+            opacity: 0.2;
+            top: 100vh;
+            transform: translateX(100px) rotate(360deg);
+        }}
+    }}
+
+    .petal:nth-child(1) {{ left: 10%; animation-duration: 8s; animation-delay: 0s; }}
+    .petal:nth-child(2) {{ left: 25%; animation-duration: 10s; animation-delay: 2s; }}
+    .petal:nth-child(3) {{ left: 40%; animation-duration: 7s; animation-delay: 4s; }}
+    .petal:nth-child(4) {{ left: 60%; animation-duration: 9s; animation-delay: 1s; }}
+    .petal:nth-child(5) {{ left: 75%; animation-duration: 11s; animation-delay: 3s; }}
+    .petal:nth-child(6) {{ left: 90%; animation-duration: 8s; animation-delay: 5s; }}
     </style>
+
+    <!-- Contenedor de pétalos -->
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
 """, unsafe_allow_html=True)
 
 # ----------------- ENCABEZADO -----------------
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Muestra la foto de novios local
 if novios_b64:
     st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="Ismael & Elizabeth">', unsafe_allow_html=True)
 else:
@@ -177,9 +215,9 @@ with col1:
         <h3>⛪ Ceremonia Religiosa</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
         <p><b>Hora:</b> 14:00 hrs</p>
-        <p><b>Lugar:</b> Parroquia San Gabriel</p>
+        <p><b>Lugar:</b> Parroquia de Nuestra Señora del Carmen</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
-        <a href="https://www.google.com/maps/place/Parroquia+de+San+Gabriel/@24.8192977,-107.3993506,16.46z/data=!4m6!3m5!1s0x86bcda0885555555:0xe6e996b30a535946!8m2!3d24.8181119!4d-107.4001306!16s%2Fg%2F11cs9_hkf0?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" "Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
+        <a href="https://maps.google.com" target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Misa</p>
         </a>
     </div>
@@ -191,9 +229,9 @@ with col2:
         <h3>🎉 Recepción & Fiesta</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
         <p><b>Hora:</b> 19:00 hrs</p>
-        <p><b>Lugar:</b> Salón Metropolitan (Piso 1)</p>
+        <p><b>Lugar:</b> Salón Los Girasoles</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
-        <a href="https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7950842,-107.4044858,19z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" "Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
+        <a href="https://maps.google.com" target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Fiesta</p>
         </a>
     </div>
@@ -277,7 +315,8 @@ with st.form("rsvp_form"):
                 "Nombre": nombre,
                 "Asistencia": asistencia,
                 "Acompañantes": acompanantes,
-                "Restricciones": restricciones
+                "Restricciones": restricciones,
+                "Mesa": "Por asignar"
             }])
             
             try:
@@ -289,6 +328,7 @@ with st.form("rsvp_form"):
             
             st.balloons()
             st.success(f"¡Muchas gracias {nombre}! Hemos recibido tu confirmación.")
+
 # ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>🍽️ Consulta tu Mesa</h2>", unsafe_allow_html=True)
@@ -304,9 +344,7 @@ nombre_buscar = st.text_input("Escribe tu nombre:", key="buscar_mesa")
 if nombre_buscar.strip() != "":
     try:
         df_mesas = pd.read_csv("asistentes.csv")
-        # Aseguramos que la columna 'Mesa' exista en el archivo
         if "Mesa" in df_mesas.columns:
-            # Buscamos coincidencias (sin importar mayúsculas/minúsculas)
             resultado = df_mesas[df_mesas["Nombre"].str.contains(nombre_buscar, case=False, na=False)]
             
             if not resultado.empty:
@@ -331,15 +369,13 @@ with st.expander("🔐 Panel de Administración (Novios)"):
         try:
             df_asistentes = pd.read_csv("asistentes.csv")
             
-            # Asegurar que la columna 'Mesa' exista en la tabla
             if "Mesa" not in df_asistentes.columns:
                 df_asistentes["Mesa"] = "Por asignar"
                 df_asistentes.to_csv("asistentes.csv", index=False)
 
             st.subheader("Lista de Confirmados")
-            
-            # Edición directa de la tabla para asignar Mesas
             st.caption("✍️ Puedes editar el número de mesa directamente en la celda de la tabla y hacer clic en 'Guardar Cambios'.")
+            
             df_edited = st.data_editor(
                 df_asistentes, 
                 num_rows="dynamic", 
@@ -357,7 +393,6 @@ with st.expander("🔐 Panel de Administración (Novios)"):
 
             st.markdown("---")
             
-            # Opcion para BORRAR un registro específico
             st.subheader("🗑️ Eliminar una Confirmación")
             if not df_asistentes.empty:
                 opciones_borrar = [f"{idx} - {row['Nombre']} ({row['Fecha_Registro']})" for idx, row in df_asistentes.iterrows()]
@@ -372,7 +407,6 @@ with st.expander("🔐 Panel de Administración (Novios)"):
 
             st.markdown("---")
             
-            # Descargar lista actualizada
             csv = df_edited.to_csv(index=False).encode('utf-8')
             st.download_button(
                 label="📥 Descargar lista en CSV",
