@@ -179,7 +179,7 @@ with col1:
         <p><b>Hora:</b> 14:00 hrs</p>
         <p><b>Lugar:</b> Parroquia San Gabriel</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
-        <a href="Gabriel Leyva, Desarrollo Urbano Tres Ríos, 80020 Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
+        <a href="https://www.google.com/maps/place/Parroquia+de+San+Gabriel/@24.8192977,-107.3993506,16.46z/data=!4m6!3m5!1s0x86bcda0885555555:0xe6e996b30a535946!8m2!3d24.8181119!4d-107.4001306!16s%2Fg%2F11cs9_hkf0?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" "Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Misa</p>
         </a>
     </div>
