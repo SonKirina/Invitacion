@@ -289,6 +289,39 @@ with st.form("rsvp_form"):
             
             st.balloons()
             st.success(f"¡Muchas gracias {nombre}! Hemos recibido tu confirmación.")
+# ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>🍽️ Consulta tu Mesa</h2>", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="card">
+    <p>Ingresa tu nombre tal como lo registraste para consultar tu mesa asignada.</p>
+</div>
+""", unsafe_allow_html=True)
+
+nombre_buscar = st.text_input("Escribe tu nombre:", key="buscar_mesa")
+
+if nombre_buscar.strip() != "":
+    try:
+        df_mesas = pd.read_csv("asistentes.csv")
+        # Aseguramos que la columna 'Mesa' exista en el archivo
+        if "Mesa" in df_mesas.columns:
+            # Buscamos coincidencias (sin importar mayúsculas/minúsculas)
+            resultado = df_mesas[df_mesas["Nombre"].str.contains(nombre_buscar, case=False, na=False)]
+            
+            if not resultado.empty:
+                for idx, row in resultado.iterrows():
+                    mesa_asignada = row.get("Mesa", "Aún no asignada")
+                    if pd.isna(mesa_asignada) or str(mesa_asignada).strip() == "":
+                        mesa_asignada = "Por asignar"
+                    
+                    st.info(f"👤 **{row['Nombre']}**: Tu mesa asignada es la **Mesa {mesa_asignada}** 🥂")
+            else:
+                st.warning("No encontramos ninguna confirmación con ese nombre.")
+        else:
+            st.info("La asignación de mesas aún no está disponible.")
+    except FileNotFoundError:
+        st.info("Aún no hay confirmaciones registradas.")
 
 # ----------------- PANEL DE ADMINISTRACIÓN -----------------
 st.markdown("<br><br>", unsafe_allow_html=True)
@@ -297,10 +330,50 @@ with st.expander("🔐 Panel de Administración (Novios)"):
     if pin == "2026":
         try:
             df_asistentes = pd.read_csv("asistentes.csv")
-            st.subheader("Lista de Confirmados")
-            st.dataframe(df_asistentes, use_container_width=True)
             
-            csv = df_asistentes.to_csv(index=False).encode('utf-8')
+            # Asegurar que la columna 'Mesa' exista en la tabla
+            if "Mesa" not in df_asistentes.columns:
+                df_asistentes["Mesa"] = "Por asignar"
+                df_asistentes.to_csv("asistentes.csv", index=False)
+
+            st.subheader("Lista de Confirmados")
+            
+            # Edición directa de la tabla para asignar Mesas
+            st.caption("✍️ Puedes editar el número de mesa directamente en la celda de la tabla y hacer clic en 'Guardar Cambios'.")
+            df_edited = st.data_editor(
+                df_asistentes, 
+                num_rows="dynamic", 
+                use_container_width=True,
+                key="editor_asistentes"
+            )
+            
+            col_admin1, col_admin2 = st.columns(2)
+            
+            with col_admin1:
+                if st.button("💾 Guardar Cambios de la Tabla"):
+                    df_edited.to_csv("asistentes.csv", index=False)
+                    st.success("¡Cambios y mesas guardados correctamente!")
+                    st.rerun()
+
+            st.markdown("---")
+            
+            # Opcion para BORRAR un registro específico
+            st.subheader("🗑️ Eliminar una Confirmación")
+            if not df_asistentes.empty:
+                opciones_borrar = [f"{idx} - {row['Nombre']} ({row['Fecha_Registro']})" for idx, row in df_asistentes.iterrows()]
+                seleccion_borrar = st.selectbox("Selecciona la confirmación a eliminar:", opciones_borrar)
+                
+                if st.button("❌ Eliminar Registro Seleccionado"):
+                    idx_eliminar = int(seleccion_borrar.split(" - ")[0])
+                    df_asistentes = df_asistentes.drop(index=idx_eliminar).reset_index(drop=True)
+                    df_asistentes.to_csv("asistentes.csv", index=False)
+                    st.success("Registro eliminado exitosamente.")
+                    st.rerun()
+
+            st.markdown("---")
+            
+            # Descargar lista actualizada
+            csv = df_edited.to_csv(index=False).encode('utf-8')
             st.download_button(
                 label="📥 Descargar lista en CSV",
                 data=csv,
