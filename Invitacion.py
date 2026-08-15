@@ -28,7 +28,7 @@ st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
-    /* Fondo de pantalla usando la foto local fondo.jpg con overlay transparente */
+    /* Fondo de pantalla usando la foto local Kirina.jpeg con overlay transparente */
     [data-testid="stAppViewContainer"] {{
         background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url("{fondo_b64}");
         background-size: cover;
@@ -130,7 +130,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 if novios_b64:
     st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="Ismael & Elizabeth">', unsafe_allow_html=True)
 else:
-    st.image("novios.jpg", use_container_width=True)
+    st.image("Kirina.jpeg", use_container_width=True)
 
 st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #7a6a53;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
@@ -148,7 +148,7 @@ st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 
 # ----------------- CUENTA REGRESIVA -----------------
 st.markdown("<h2>⏳ Cuenta Regresiva</h2>", unsafe_allow_html=True)
-fecha_boda = datetime(2026, 12, 18, 19, 0, 0)
+fecha_boda = datetime(2026, 12, 18, 14, 0, 0)
 tiempo_restante = fecha_boda - datetime.now()
 
 if tiempo_restante.days > 0:
@@ -166,7 +166,7 @@ else:
 
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 
-# ----------------- DETALLES DEL EVENTO -----------------
+# ----------------- DETALLES DEL EVENTO (MISA Y FIESTA) -----------------
 st.markdown("<h2>✨ Dónde & Cuándo</h2>", unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
@@ -174,21 +174,27 @@ col1, col2 = st.columns(2)
 with col1:
     st.markdown("""
     <div class="card">
-        <h3>📅 Fecha & Hora</h3>
+        <h3>⛪ Ceremonia Religiosa</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
-        <p>Recepción: 19:00 hrs</p>
-        <p>Misa: 14:00 hrs</p>
+        <p><b>Hora:</b> 14:00 hrs</p>
+        <p><b>Lugar:</b> Parroquia de Nuestra Señora del Carmen</p>
+        <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
+        <a href="https://maps.google.com" target="_blank" style="text-decoration: none;">
+            <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Misa</p>
+        </a>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("""
     <div class="card">
-        <h3>📍 Lugar</h3>
-        <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">Salón Los Girasoles</p>
-        <p>Culiacán, Sinaloa</p>
+        <h3>🎉 Recepción & Fiesta</h3>
+        <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
+        <p><b>Hora:</b> 19:00 hrs</p>
+        <p><b>Lugar:</b> Salón Los Girasoles</p>
+        <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
         <a href="https://maps.google.com" target="_blank" style="text-decoration: none;">
-            <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ver en Google Maps</p>
+            <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Fiesta</p>
         </a>
     </div>
     """, unsafe_allow_html=True)
@@ -199,10 +205,10 @@ st.markdown("<h2>📋 Itinerario</h2>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="card" style="text-align: left; padding-left: 30px;">
-    <p><b>17:00 hrs</b> — 🥂 Recepción y Cóctel de Bienvenida</p>
-    <p><b>18:00 hrs</b> — 💍 Ceremonia Religiosa / Civil</p>
-    <p><b>19:30 hrs</b> — 🍽️ Banquete y Brindis</p>
-    <p><b>21:00 hrs</b> — 💃 ¡Apertura de Pista y Fiesta!</p>
+    <p><b>14:00 hrs</b> — 💍 Misa / Ceremonia Religiosa</p>
+    <p><b>19:00 hrs</b> — 🥂 Recepción y Cóctel de Bienvenida</p>
+    <p><b>20:30 hrs</b> — 🍽️ Banquete y Brindis</p>
+    <p><b>21:30 hrs</b> — 💃 ¡Apertura de Pista y Fiesta!</p>
 </div>
 """, unsafe_allow_html=True)
 
