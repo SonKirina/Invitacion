@@ -298,7 +298,7 @@ with st.expander("🔐 Panel de Administración (Novios)"):
             st.download_button(
                 label="📥 Descargar lista en CSV",
                 data=csv,
-                file_name='asistentes_boda_maria_carlos.csv',
+                file_name='asistentes_boda_Ismael_Elizabeth.csv',
                 mime='text/csv',
             )
         except FileNotFoundError:
