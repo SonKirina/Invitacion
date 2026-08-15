@@ -177,9 +177,9 @@ with col1:
         <h3>⛪ Ceremonia Religiosa</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
         <p><b>Hora:</b> 14:00 hrs</p>
-        <p><b>Lugar:</b> Parroquia de Nuestra Señora del Carmen</p>
+        <p><b>Lugar:</b> Parroquia San Gabriel</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
-        <a href="https://maps.google.com" target="_blank" style="text-decoration: none;">
+        <a href="Gabriel Leyva, Desarrollo Urbano Tres Ríos, 80020 Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Misa</p>
         </a>
     </div>
@@ -191,9 +191,9 @@ with col2:
         <h3>🎉 Recepción & Fiesta</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
         <p><b>Hora:</b> 19:00 hrs</p>
-        <p><b>Lugar:</b> Salón Los Girasoles</p>
+        <p><b>Lugar:</b> Salón Metropolitan (Piso 1)</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
-        <a href="https://maps.google.com" target="_blank" style="text-decoration: none;">
+        <a href="Blvd. Emiliano Zapata 969, Industrial Bravo, Los Pinos, 80128 Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Fiesta</p>
         </a>
     </div>
