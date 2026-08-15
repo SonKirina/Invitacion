@@ -193,7 +193,7 @@ with col2:
         <p><b>Hora:</b> 19:00 hrs</p>
         <p><b>Lugar:</b> Salón Metropolitan (Piso 1)</p>
         <p style="font-size: 0.9rem; color: #777;">Culiacán, Sinaloa</p>
-        <a href="https://maps.app.goo.gl/https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7950842,-107.4044858,19z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" "Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
+        <a href="https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7950842,-107.4044858,19z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" "Culiacán Rosales, Sin." target="_blank" style="text-decoration: none;">
             <p style="color: #d4af37; font-weight: 600; margin-top: 10px;">🗺️ Ubicación de la Fiesta</p>
         </a>
     </div>
