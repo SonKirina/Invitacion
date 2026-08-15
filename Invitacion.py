@@ -5,7 +5,7 @@ import base64
 
 # Configuración de la página
 st.set_page_config(
-    page_title="Boda de María & Carlos 💍", 
+    page_title="Boda de Ismael & Elizabeth 💍", 
     page_icon="💍", 
     layout="centered"
 )
@@ -128,7 +128,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # Muestra la foto de novios local
 if novios_b64:
-    st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="María & Carlos">', unsafe_allow_html=True)
+    st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="Ismael & Elizabeth">', unsafe_allow_html=True)
 else:
     st.image("novios.jpg", use_container_width=True)
 
@@ -148,7 +148,7 @@ st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 
 # ----------------- CUENTA REGRESIVA -----------------
 st.markdown("<h2>⏳ Cuenta Regresiva</h2>", unsafe_allow_html=True)
-fecha_boda = datetime(2026, 12, 15, 17, 0, 0)
+fecha_boda = datetime(2026, 12, 18, 19, 0, 0)
 tiempo_restante = fecha_boda - datetime.now()
 
 if tiempo_restante.days > 0:
@@ -175,9 +175,9 @@ with col1:
     st.markdown("""
     <div class="card">
         <h3>📅 Fecha & Hora</h3>
-        <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">15 de Diciembre de 2026</p>
-        <p>Recepción: 17:00 hrs</p>
-        <p>Misa: 18:00 hrs</p>
+        <p style="font-size: 1.1rem; font-weight: 600; color: #8c7853;">18 de Diciembre de 2026</p>
+        <p>Recepción: 19:00 hrs</p>
+        <p>Misa: 14:00 hrs</p>
     </div>
     """, unsafe_allow_html=True)
 
