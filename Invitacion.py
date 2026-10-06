@@ -52,12 +52,12 @@ st.markdown(
         font-weight: 600;
     }}
     
-    /* 2. Título principal */
+ /* 2. Título principal para pantallas normales/computadora */
     h1, .titulo-principal, h1 * {{
-        color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
+        color: #FAF9F6 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 800 !important;
-        font-size: 6.5rem !important; /* Puedes subirlo a 6.0rem, 6.5rem, etc. */
+        font-size: 6.5rem !important; /* Grande en PC */
         letter-spacing: 1px !important;
         text-align: center !important;
         width: 100% !important;
@@ -66,9 +66,15 @@ st.markdown(
         display: block !important;
         -webkit-text-stroke: 1.0px #000000 !important;
         text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.7) !important;
-
-        /* Evita que se rompa en dos renglones */
         white-space: nowrap !important;
+    }}
+
+    /* Ajuste automático exclusivo para Celulares */
+    @media (max-width: 768px) {{
+        h1, .titulo-principal, h1 * {{
+            font-size: 2.8rem !important; /* Se ajusta en celular para caber perfecto en 1 sola línea */
+            -webkit-text-stroke: 0.8px #000000 !important;
+        }}
     }}
     
     /* 3. Textos generales (sin afectar contenedores div) */
