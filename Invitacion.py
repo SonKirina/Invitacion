@@ -53,16 +53,12 @@ st.markdown(
     }}
     
     /* 2. Título principal */
-    h1, .titulo-principal, h1 * {{
-        color: #FAF9F6 !important;
+    h1, .titulo-principal, h1 *  {{
+        color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 700 !important;
-        font-size: 4.2rem !important; /* Un tamaño amplio pero razonable para 1 sola línea */
-        
-        /* Fuerza a que nunca se divida en dos renglones */
-        white-space: nowrap !important;
-        
-        letter-spacing: 0px !important;
+        font-size: 6.5rem !important;
+        letter-spacing: 1px !important;
         text-align: center !important;
         width: 100% !important;
         margin-left: auto !important;
