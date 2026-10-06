@@ -65,7 +65,7 @@ st.markdown(
 
 
     h4 * {{
-        color: #000000 !important;
+        color: #FAF9F6 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 1.8rem !important;
         font-weight: 800 !important;
