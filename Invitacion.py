@@ -85,20 +85,37 @@ st.markdown(
     }}
     
     /* Títulos de las casillas dentro del formulario (Nombre completo, ¿Nos acompañarás?, etc.) */
-        [data-testid="stForm"] label, 
-        [data-testid="stForm"] .stWidgetLabel p {{
-            color: #70495B !important; /* <--- Cambia este color (ej. #FAF9F6 para blanco marfil, #C5A059 para dorado) */
-            font-family: 'Cormorant Garamond', serif !important;
-            font-size: 1.05rem !important;
-            font-weight: 900 !important;
-        }}
-    
-        /* Opciones de opción múltiple (Sí, ahí estaré / No podré asistir) */
-        [data-testid="stForm"] [data-testid="stRadioButton"] p {{
-            color: #70495B !important; /* <--- Cambia este color */
-            font-family: 'Cormorant Garamond', serif !important;
-        }}
+    [data-testid="stForm"] label, 
+    [data-testid="stForm"] .stWidgetLabel p {{
+        color: #FFFFFF !important; /* Blanco puro */
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 1.05rem !important;
+        font-weight: 700 !important;
+        
+        /* Contorno negro definido + sombra de relieve */
+        text-shadow: 
+            -1px -1px 0 #000,  
+             1px -1px 0 #000,
+            -1px  1px 0 #000,
+             1px  1px 0 #000,
+             2px  2px 4px rgba(0, 0, 0, 0.8) !important;
+    }}
 
+    /* Opciones de la lista desplegable/radio ("Sí, ahí estaré...", etc.) */
+    [data-testid="stForm"] [data-testid="stRadioButton"] p {{
+        color: #FFFFFF !important; /* Blanco puro */
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: 600 !important;
+
+        /* Contorno negro un poco más sutil para texto más pequeño */
+        text-shadow: 
+            -0.8px -0.8px 0 #000,  
+             0.8px -0.8px 0 #000,
+            -0.8px  0.8px 0 #000,
+             0.8px  0.8px 0 #000,
+             1px  1px 3px rgba(0, 0, 0, 0.8) !important;
+    }}
+    
     /* Tarjetas estilo cristal */
     .card {{
         background: rgba(255, 255, 255, 0.92);
