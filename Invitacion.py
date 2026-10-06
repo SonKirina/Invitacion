@@ -142,7 +142,48 @@ st.markdown(
         color: #000000;
         font-size: 1.5rem;
     }}
-   
+
+    /* --- ANIMACIÓN DE PÉTALOS CAYENDO --- */
+    .petal {{
+        position: fixed;
+        top: -10px;
+        pointer-events: none;
+        z-index: 9999;
+        animation: fall linear infinite;
+        font-size: 1.2rem;
+        user-select: none;
+    }}
+
+    @keyframes fall {{
+        0% {{
+            opacity: 1;
+            top: -10px;
+            transform: translateX(0) rotate(0deg);
+        }}
+        100% {{
+            opacity: 0.2;
+            top: 100vh;
+            transform: translateX(100px) rotate(360deg);
+        }}
+    }}
+
+    .petal:nth-child(1) {{ left: 10%; animation-duration: 8s; animation-delay: 0s; }}
+    .petal:nth-child(2) {{ left: 25%; animation-duration: 10s; animation-delay: 2s; }}
+    .petal:nth-child(3) {{ left: 40%; animation-duration: 7s; animation-delay: 4s; }}
+    .petal:nth-child(4) {{ left: 60%; animation-duration: 9s; animation-delay: 1s; }}
+    .petal:nth-child(5) {{ left: 75%; animation-duration: 11s; animation-delay: 3s; }}
+    .petal:nth-child(6) {{ left: 90%; animation-duration: 8s; animation-delay: 5s; }}
+    </style>
+
+    <!-- Contenedor de pétalos -->
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+    <div class="petal">🌸</div>
+""",
+    unsafe_allow_html=True,
 )
 
 # ----------------- ENCABEZADO -----------------
