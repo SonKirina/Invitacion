@@ -54,7 +54,7 @@ st.markdown(
         color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
         font-family: 'Playfair Display', serif !important;
         font-weight: 800 !important;
-        font-size: 3.8rem !important;
+        font-size: 5.0 rem !important;
         letter-spacing: 1px !important;
         text-align: center !important;
         text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6) !important;
