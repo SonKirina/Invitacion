@@ -314,38 +314,39 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# 1. Nombre principal
+nombre = st.text_input("Nombre completo del invitado(a) principal:")
+
+# 2. Número de acompañantes (fuera del form para reacondicionar los campos al instante)
+acompanantes = st.number_input(
+    "Número de acompañantes adicionales:",
+    min_value=0,
+    max_value=5,
+    step=1,
+    value=0,
+)
+
+# 3. Formulario para capturar los nombres dinámicos y la confirmación
 with st.form("rsvp_form"):
-    # 1. Nombre principal
-    nombre = st.text_input("Nombre completo del invitado(a) principal:")
-
-    # 2. Número de acompañantes justo debajo del nombre
-    acompanantes = st.number_input(
-        "Número de acompañantes adicionales:",
-        min_value=0,
-        max_value=5,
-        step=1,
-        value=0,
-    )
-
-    # 3. Generación de campos para los nombres de los acompañantes
     nombres_acompanantes = []
+
+    # Generación inmediata de campos de texto para acompañantes
     if acompanantes > 0:
         st.markdown(
-            "<p style='color: #FFFFFF !important; font-weight: 600; margin-top: 15px; margin-bottom: 5px;'>Nombres de tus acompañantes:</p>",
+            "<p style='color: #FFFFFF !important; font-weight: 600; margin-top: 10px; margin-bottom: 5px;'>Nombres de tus acompañantes:</p>",
             unsafe_allow_html=True,
         )
         for i in range(int(acompanantes)):
             nombre_acomp = st.text_input(
-                f"Nombre del acompañante {i+1}:", key=f"acomp_{i}"
+                f"Nombre completo del acompañante {i+1}:", key=f"acomp_{i}"
             )
             nombres_acompanantes.append(nombre_acomp)
 
-    # 4. Asistencia y Restricciones
     asistencia = st.radio(
         "¿Nos acompañarás?",
         [
             "Sí, ahí estaré con mucho gusto 🥂",
-            "Lamentablemente no podré asistir ❤️",
+            "Lamentablemente no podré asistir ❤️️",
         ],
     )
 
@@ -359,9 +360,10 @@ with st.form("rsvp_form"):
             n.strip() for n in nombres_acompanantes if n.strip() != ""
         ]
 
-        # Validaciones
         if not nombre_clean:
-            st.error("Por favor, ingresa tu nombre completo antes de enviar.")
+            st.error(
+                "Por favor, ingresa tu nombre completo antes de enviar la confirmación."
+            )
 
         elif acompanantes > 0 and len(lista_nombres_acomp) < acompanantes:
             st.error(
