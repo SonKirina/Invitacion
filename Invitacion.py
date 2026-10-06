@@ -57,6 +57,7 @@ st.markdown(f"""
         font-size: 3rem !important;
         letter-spacing: 2px;
         margin-bottom: 0px !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Sombra para resaltar sobre fondo claro */
         }}
 
     p, span, label, div {{
