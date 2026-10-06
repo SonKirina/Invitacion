@@ -61,12 +61,11 @@ st.markdown(
         text-shadow: 2px 2px 6px rgba(0,0,0,0.65);
     }}
 
-    /* Párrafos, etiquetas y texto en general (Negro Carbón) */
-    p, span, label, div, b, strong {{
-        font-family: 'Montserrat', sans-serif !important;
-        color: #000080 !important;
+    p, span, label, div:not(:has(h1)), b, strong {{
+            font-family: 'Montserrat', sans-serif !important;
+            color: #000000 !important;
     }}
-
+    
     /* Tarjetas estilo cristal */
     .card {{
         background: rgba(255, 255, 255, 0.92);
