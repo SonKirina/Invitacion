@@ -55,7 +55,7 @@ st.markdown(
 
     /* --- EDITAR H3 INDIVIDUALMENTE --- */
     h3, h3 * {{
-        color: #FFFFFF !important;
+        color: #000000 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 1.8rem !important;
         font-weight: 800 !important;
