@@ -87,7 +87,7 @@ st.markdown(
     /* Títulos de las casillas dentro del formulario (Nombre completo, ¿Nos acompañarás?, etc.) */
         [data-testid="stForm"] label, 
         [data-testid="stForm"] .stWidgetLabel p {{
-            color: #59624F !important; /* <--- Cambia este color (ej. #FAF9F6 para blanco marfil, #C5A059 para dorado) */
+            color: #70495B !important; /* <--- Cambia este color (ej. #FAF9F6 para blanco marfil, #C5A059 para dorado) */
             font-family: 'Cormorant Garamond', serif !important;
             font-size: 1.05rem !important;
             font-weight: 900 !important;
@@ -95,7 +95,7 @@ st.markdown(
     
         /* Opciones de opción múltiple (Sí, ahí estaré / No podré asistir) */
         [data-testid="stForm"] [data-testid="stRadioButton"] p {{
-            color: #FAF9F6 !important; /* <--- Cambia este color */
+            color: #70495B !important; /* <--- Cambia este color */
             font-family: 'Montserrat', sans-serif !important;
         }}
 
