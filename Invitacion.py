@@ -28,27 +28,28 @@ def cargar_svg(path_archivo):
 # Renderizar en la pantalla
 svg_contenido = cargar_svg("Frame 45.svg")  # pon aquí el nombre de tu archivo
 
-# 1. Eliminamos atributos width y height fijos del código del SVG para que sea totalmente flexible
-svg_escalable = re.sub(
-    r'(<svg[^>]*?)\s+(width|height)=["\'][^"\']*["\']', r"\1", svg_contenido
-)
+def renderizar_svg(path_svg, ancho=450):
+    with open(path_svg, "rb") as f:
+        svg_bytes = f.read()
 
-# 2. Le inyectamos style="width: 100%; height: auto;" directamente a la etiqueta <svg>
-svg_escalable = svg_escalable.replace(
-    "<svg", '<svg style="width: 100% !important; height: auto !important;"'
-)
+    # Convertir a Base64
+    encoded = base64.b64encode(svg_bytes).decode("utf-8")
+    data_uri = f"data:image/svg+xml;base64,{encoded}"
 
-# 3. Lo renderizamos envolviéndolo en el contenedor deseado (ajusta max-width a tu gusto)
-st.markdown(
-    f"""
-<div style="text-align: center; width: 100%; margin-top: 10px; margin-bottom: 20px;">
-<div style="max-width: 900px; margin: 0 auto; display: block;">
-{svg_escalable}
-</div>
-</div>
-""".strip(),
-    unsafe_allow_html=True,
-)
+    # Renderizar centrado mediante HTML de imagen directa
+    st.markdown(
+        f"""
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+            <img src="{data_uri}" style="width: {ancho}px; max-width: 100%; height: auto;" />
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# Reemplaza 'tu_diseno.svg' por el nombre de tu archivo SVG
+# Cambia el numero 500 para hacerlo tan grande como quieras (ej. 600, 700)
+renderizar_svg("tu_diseno.svg", ancho=500)
 
 # Carga de imágenes locales
 fondo_b64 = get_image_base64("Fondo_5.jpg")
