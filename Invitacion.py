@@ -245,6 +245,21 @@ with col2:
         unsafe_allow_html=True,
     )
 
+# ----------------- NOTAS IMPORTANTES -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>💡 Información Importante</h2>", unsafe_allow_html=True)
+
+st.markdown(
+    """
+<div class="card">
+    <h3 style="font-size: 1.3rem;">🎁 Mesa de Regalos</h3>
+    <p style="color: #000000 !important;">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
+    <p style="color: #000000 !important;">• <b>Liverpool:</b> Evento No. 123456</p>
+    <p style="color: #000000 !important;">• Contaremos con lluvia de sobres en la recepción.</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
 
 # ----------------- GALERÍA DE FOTOS LOCALES -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
