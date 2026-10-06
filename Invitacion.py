@@ -118,7 +118,6 @@ st.markdown(
         color: #FFFFFF !important;
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 600 !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
     }}
     
     /* Tarjetas estilo cristal */
