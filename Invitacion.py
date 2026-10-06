@@ -41,7 +41,7 @@ st.markdown(f"""
     }}
 
     h1, h2, h3 {{
-        color: #D4AF37 !important;
+        color: #4a4a4a  !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 600;
