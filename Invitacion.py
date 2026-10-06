@@ -87,7 +87,7 @@ st.markdown(
     /* Títulos de las casillas dentro del formulario (Nombre completo, ¿Nos acompañarás?, etc.) */
         [data-testid="stForm"] label, 
         [data-testid="stForm"] .stWidgetLabel p {{
-            color: #FAF9F6 !important; /* <--- Cambia este color (ej. #FAF9F6 para blanco marfil, #C5A059 para dorado) */
+            color: #06402B !important; /* <--- Cambia este color (ej. #FAF9F6 para blanco marfil, #C5A059 para dorado) */
             font-family: 'Montserrat', sans-serif !important;
             font-size: 1.05rem !important;
             font-weight: 800 !important;
