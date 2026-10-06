@@ -2,9 +2,7 @@ import base64
 from datetime import datetime
 import pandas as pd
 import streamlit as st
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">0
+
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap');
 
 # Configuración de la página
@@ -56,15 +54,15 @@ st.markdown(
     }}
 
     /* Estilo exacto para Ismael & Elizabeth */
-    h1, div h1 {{
+    h1, div h1, .titulo-principal {{
         font-family: 'Playfair Display', serif !important;
         color: #FDFBF7 !important; /* Blanco cálido / Hueso */
         font-weight: 500 !important;
-        font-size: 3.8rem !important;
+        font-size: 3.5rem !important;
         text-align: center !important;
         letter-spacing: 0.5px !important;
-        /* Sombra para legibilidad sobre imágenes claras u oscuras */
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.45) !important;
+        margin-bottom: 5px !important;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5) !important;
     }}
 
     p, span, label, div:not(:has(h1)), b, strong {{
