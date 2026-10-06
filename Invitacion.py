@@ -83,6 +83,7 @@ st.markdown(
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         margin-bottom: 25px;
         text-align: center;
+        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6) !important;
     }}
 
     /* Foto circular principal de los novios */
