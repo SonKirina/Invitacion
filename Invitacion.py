@@ -65,11 +65,13 @@ st.markdown(
         margin-right: auto !important;
         display: block !important;
 
-        /* Contorno negro para resaltar sobre la imagen */
-        -webkit-text-stroke: 0.5px #000000 !important;
-
-        /* Sombra adicional para dar profundidad */
-        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.7) !important;
+    /* Contorno limpio + sombra suave (sin deformar el trazo interno de la letra) */
+        text-shadow: 
+            -1px -1px 0 #000,  
+             1px -1px 0 #000,
+            -1px  1px 0 #000,
+             1px  1px 0 #000,
+             2px  3px 8px rgba(0, 0, 0, 0.65) !important;
     }}
     
     /* 3. Textos generales (sin afectar contenedores div) */
