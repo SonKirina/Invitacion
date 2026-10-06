@@ -45,12 +45,24 @@ st.markdown(
     }}
 
     /* 1. Títulos secundarios */
-    h2, h3, h2 *, h3 * {{
+    h2, h2  * {{
         color: #FAF9F6 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 600;
     }}
+
+        /* 1. Títulos secundarios */
+    h3, {{
+        color: #FAF9F6 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        text-align: center;
+        font-weight: 600;
+    }}
+
+    
+
+
     
     /* 2. Título principal */
     h1, .titulo-principal, h1 * {{
