@@ -66,7 +66,7 @@ st.markdown(
         display: block !important;
 
         /* Contorno negro para resaltar sobre la imagen */
-        -webkit-text-stroke: 0.8px #000000 !important;
+        -webkit-text-stroke: 0.5px #000000 !important;
 
         /* Sombra adicional para dar profundidad */
         text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.7) !important;
