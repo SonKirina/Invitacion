@@ -20,8 +20,8 @@ def get_image_base64(file_path):
         return ""
 
 # Carga de imágenes locales
-fondo_b64 = get_image_base64("Fondo.jpeg")
-novios_b64 = get_image_base64("Fondo.jpeg")
+fondo_b64 = get_image_base64("Fondo_2.jpeg")
+novios_b64 = get_image_base64("Fondo_2.jpeg")
 
 # Estilo visual avanzado con CSS y EFECTO DE PÉTALOS CAYENDO
 st.markdown(f"""
@@ -168,7 +168,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 if novios_b64:
     st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="Ismael & Elizabeth">', unsafe_allow_html=True)
 else:
-    st.image("Fondo.jpeg", use_container_width=True)
+    st.image("Fondo_2.jpeg", use_container_width=True)
 
 st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #7a6a53;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
