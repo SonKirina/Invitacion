@@ -91,7 +91,7 @@ st.markdown(
         -webkit-backdrop-filter: blur(8px) !important;
         padding: 20px !important;
         border-radius: 12px !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
     }}
 
     /* Textos nítidos en blanco sin contorno artificial */
