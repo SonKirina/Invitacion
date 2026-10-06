@@ -92,7 +92,7 @@ st.markdown(
         -webkit-backdrop-filter: blur(6px) !important;
         padding: 20px !important;
         border-radius: 12px !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
     }}
 
     /* Garantizar texto blanco en todos las etiquetas de la sección */
@@ -100,7 +100,7 @@ st.markdown(
         color: #FFFFFF !important;
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 600 !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
     }}
     
     /* Tarjetas estilo cristal */
