@@ -62,6 +62,8 @@ st.markdown(
         text-align: center !important;
         text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6) !important;
         font-feature-settings: "liga" 1, "dlig" 1 !important;
+        white-space: nowrap !important;
+        letter-spacing: 0px !important;
     }}
     
     /* 3. Textos generales (sin afectar contenedores div) */
