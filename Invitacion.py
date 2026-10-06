@@ -77,7 +77,7 @@ st.markdown(
     /* 3. Textos generales (sin afectar contenedores div) */
     p, label, b, strong, .stMarkdown p {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #FFBF00 !important;
+        color: #000000 !important;
     }}
 
     /* Tarjetas estilo cristal */
