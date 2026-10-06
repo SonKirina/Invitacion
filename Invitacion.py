@@ -2,6 +2,7 @@ import base64
 from datetime import datetime
 import pandas as pd
 import streamlit as st
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;600&display=swap');
 
 # Configuración de la página
 st.set_page_config(
