@@ -25,18 +25,17 @@ def cargar_svg(path_archivo):
         return f.read()
 
 
-svg_modificado = svg_contenido.replace(
-    "<svg", '<svg style="width: 100% !important; height: auto !important;"'
-)
+# Renderizar en la pantalla
+svg_contenido = cargar_svg("Frame 45.svg")  # pon aquí el nombre de tu archivo
 
 st.markdown(
     f"""
-<div style="text-align: center; width: 100%; margin-top: 10px; margin-bottom: 20px;">
-<div style="max-width: 550px; margin: 0 auto;">
-{svg_modificado}
+<div style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+<div style="max-width: 9000px; margin: 0 auto; width: 100%;">
+{svg_contenido}
 </div>
 </div>
-""".strip(),
+""",
     unsafe_allow_html=True,
 )
 
