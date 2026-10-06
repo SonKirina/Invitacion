@@ -47,7 +47,7 @@ st.markdown(
     /* --- EDITAR H2 INDIVIDUALMENTE --- */
     h2, h2 * {{
         color: #FFFFFF !important;
-        font-family: 'Cormorant Garamond', serif !important;
+        font-family: 'Playfair Display', serif !important;
         font-size: 2.2rem !important;
         font-weight: 800 !important;
         text-align: center !important;
@@ -56,7 +56,7 @@ st.markdown(
     /* --- EDITAR H3 INDIVIDUALMENTE --- */
     h3, h3 * {{
         color: #000000 !important;
-        font-family: 'Cormorant Garamond', serif !important;
+        font-family: 'Playfair Display', serif !important;
         font-size: 1.8rem !important;
         font-weight: 800 !important;
         text-align: center !important;
