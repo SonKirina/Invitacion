@@ -46,7 +46,7 @@ st.markdown(
 
     /* 1. Títulos secundarios */
     h2, h3, h2 *, h3 * {{
-        color: #FAF9F6 !important;
+        color: #000000 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 600;
@@ -74,8 +74,8 @@ st.markdown(
              2px  3px 8px rgba(0, 0, 0, 0.65) !important;
     }}
     
-    /* 3. Textos generales (sin afectar contenedores div) */
-    p, label, b, strong, .stMarkdown p {{
+    /* Solo aplica a párrafos dentro de tarjetas para mantenerlos negros */
+    .card p, .card label, .card strong {{
         font-family: 'Montserrat', sans-serif !important;
         color: #000000 !important;
     }}
@@ -152,7 +152,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown(
-    "<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #FFD700 !important; font-weight: 600;'>¡NOS CASAMOS!</p>",
+    "<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #0000FF !important; font-weight: 600;'>¡NOS CASAMOS!</p>",
     unsafe_allow_html=True,
 )
 
