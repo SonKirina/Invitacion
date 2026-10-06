@@ -254,7 +254,10 @@ st.markdown(
 <div class="card">
     <h3 style="font-size: 1.3rem;">🎁 Mesa de Regalos</h3>
     <p style="color: #000000 !important;">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
-    <p style="color: #000000 !important;">• <b>Liverpool:</b> Evento No. 123456</p>
+    <p style="color: #000000 !important;">
+        • <b>Liverpool:</b> Evento No. 123456 — 
+        <a href="https://share.google/bbgOiCJZ5KLbHyMmv" target="_blank" style="color: #1a0dab; font-weight: 600; text-decoration: underline;">Ver mesa de regalos aquí</a>
+    </p>
     <p style="color: #000000 !important;">• Contaremos con lluvia de sobres en la recepción.</p>
 </div>
 """,
