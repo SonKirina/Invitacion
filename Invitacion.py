@@ -28,6 +28,7 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;600&display=swap');
 
 
     /* Fondo de pantalla directo */
@@ -54,7 +55,7 @@ st.markdown(
     /* 2. Título principal */
     h1, .titulo-principal, h1 * {{
         color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
-        font-family: 'Playfair Display', serif !important;
+        font-family: 'Cormorant Garamond', serif !important;
         font-weight: 700 !important;
         font-size: 4.0rem !important;
         letter-spacing: 1px !important;
