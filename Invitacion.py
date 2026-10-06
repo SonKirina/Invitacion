@@ -90,7 +90,7 @@ st.markdown(
             color: #FAF9F6 !important; /* <--- Cambia este color (ej. #FAF9F6 para blanco marfil, #C5A059 para dorado) */
             font-family: 'Montserrat', sans-serif !important;
             font-size: 1.05rem !important;
-            font-weight: 600 !important;
+            font-weight: 800 !important;
         }}
     
         /* Opciones de opción múltiple (Sí, ahí estaré / No podré asistir) */
