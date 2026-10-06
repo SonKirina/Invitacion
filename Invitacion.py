@@ -96,7 +96,7 @@ st.markdown(
         /* Opciones de opción múltiple (Sí, ahí estaré / No podré asistir) */
         [data-testid="stForm"] [data-testid="stRadioButton"] p {{
             color: #70495B !important; /* <--- Cambia este color */
-            font-family: 'Montserrat', sans-serif !important;
+            font-family: 'Cormorant Garamond', serif !important;
         }}
 
     /* Tarjetas estilo cristal */
