@@ -410,10 +410,23 @@ with st.container():
             df.to_csv("asistentes.csv", index=False)
 
             st.balloons()
-            st.success(
-                f"¡Muchas gracias {nombre_clean}! Hemos recibido tu confirmación."
+            st.markdown(
+                f"""
+                <div style="
+                    background-color: #FFFFFF; 
+                    padding: 16px; 
+                    border-radius: 8px; 
+                    border: 1px solid #E0E0E0;
+                    box-shadow: 0px 2px 4px rgba(0,0,0,0.05);
+                    margin: 10px 0px;">
+                    <span style="font-size: 18px; margin-right: 8px;">✅</span>
+                    <span style="color: #262730; font-weight: 500;">
+                        ¡Muchas gracias <strong>{nombre_clean}</strong>! Hemos recibido tu confirmación.
+                    </span>
+                </div>
+                """, 
+                unsafe_allow_html=True
             )
-
 # ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>🍽️ Consulta tu Mesa</h2>", unsafe_allow_html=True)
