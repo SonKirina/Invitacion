@@ -45,7 +45,7 @@ st.markdown(
 
     /* Títulos principales (Negro Intenso) */
     h1, h2, h3 {{
-        color: #000000 !important;
+        color: #FFF8E70 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 700 !important;
