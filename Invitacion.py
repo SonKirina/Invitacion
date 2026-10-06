@@ -267,25 +267,6 @@ with g_col3:
     except Exception:
         st.write("📷 Foto 3")
 
-# ----------------- NOTAS IMPORTANTES -----------------
-st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
-st.markdown("<h2>💡 Información Importante</h2>", unsafe_allow_html=True)
-
-st.markdown(
-    """
-<div class="card">
-    <h3 style="font-size: 1.3rem;">👗 Código de Vestimenta</h3>
-    <p style="color: #000000 !important;"><b>Formal / Rigurosa Etiqueta</b></p>
-    <p style="font-size: 0.9rem; color: #222222 !important;">Les pedimos amablemente reservar los tonos blanco, marfil y crema para la novia.</p>
-    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
-    <h3 style="font-size: 1.3rem;">🎁 Mesa de Regalos</h3>
-    <p style="color: #000000 !important;">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
-    <p style="color: #000000 !important;">• <b>Liverpool:</b> Evento No. 123456</p>
-    <p style="color: #000000 !important;">• Contaremos con lluvia de sobres en la recepción.</p>
-</div>
-""",
-    unsafe_allow_html=True,
-)
 
 # ----------------- FORMULARIO RSVP -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
