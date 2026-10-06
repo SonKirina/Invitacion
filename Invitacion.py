@@ -20,18 +20,19 @@ def get_image_base64(file_path):
         return ""
 
 # Carga de imágenes locales
-fondo_b64 = get_image_base64("Fondo_5.jpg")
+fondo_b64 = get_image_base64("Kirina.jpeg")
+novios_b64 = get_image_base64("Fondo_2.jpg")
 
 # Estilo visual avanzado con CSS y EFECTO DE PÉTALOS CAYENDO
 st.markdown(f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
-    /* Fondo de pantalla usando la foto local Kirina.jpeg con overlay transparente */
+    /* Fondo de pantalla directo sin capas transparentes ni degradados */
     [data-testid="stAppViewContainer"] {{
         background-image: url({fondo_b64});
         background-size: cover;
-        background-position: center 35%;
+        background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }}
@@ -40,29 +41,22 @@ st.markdown(f"""
         background-color: rgba(0,0,0,0);
     }}
 
-    h2, h3 {{
-        color: #4a4a4a  !important;
+    h1, h2, h3 {{
+        color: #6b5b45 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 600;
     }}
-    
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
-    
-    titulo-boda {{
-        color: #000080 !important;
-        font-family: 'Poppins', sans-serif !important;
-        text-align: center;
-        font-weight: 600;
+
+    h1 {{
         font-size: 3rem !important;
         letter-spacing: 2px;
         margin-bottom: 0px !important;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Sombra para resaltar sobre fondo claro */
-        }}
+    }}
 
     p, span, label, div {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #4a4a4a ;
+        color: #4a4a4a;
     }}
 
     /* Tarjetas estilo cristal (Glassmorphism) */
@@ -171,12 +165,16 @@ st.markdown(f"""
 # ----------------- ENCABEZADO -----------------
 st.markdown("<br>", unsafe_allow_html=True)
 
+if novios_b64:
+    st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="Ismael & Elizabeth">', unsafe_allow_html=True)
+else:
+    try:
+        st.image("Fondo_3.jpg", use_container_width=True)
+    except Exception:
+        st.info("📷 [Imagen de portada]")
 
-st.markdown(
-    '<h1 class="titulo-boda">Ismael & Elizabeth</h1>',
-    unsafe_allow_html=True
-)
-st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #FFD700;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
+st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #7a6a53;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="card">
