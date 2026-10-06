@@ -31,7 +31,7 @@ st.markdown(f"""
     [data-testid="stAppViewContainer"] {{
         background-image: url({fondo_b64});
         background-size: cover;
-        background-position: center;
+        background-position: center 35%;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }}
