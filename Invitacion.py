@@ -51,7 +51,7 @@ st.markdown(
 
     /* Estilo exacto para Ismael & Elizabeth */
     h1, div h1, .titulo-principal {{
-        color: #FFFFFF !important;
+        color: #FFD700 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 600;
         font-size: 3.5rem !important;
