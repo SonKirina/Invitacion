@@ -52,29 +52,24 @@ st.markdown(
         font-weight: 600;
     }}
     
- /* 2. Título principal para pantallas normales/computadora */
+/* 2. Título principal */
     h1, .titulo-principal, h1 * {{
-        color: #FAF9F6 !important;
+        color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
         font-family: 'Cormorant Garamond', serif !important;
-        font-weight: 800 !important;
-        font-size: 6.5rem !important; /* Grande en PC */
+        font-weight: 700 !important;
+        font-size: clamp(2.8rem, 5.5vw, 4.5rem) !important;
         letter-spacing: 1px !important;
         text-align: center !important;
         width: 100% !important;
         margin-left: auto !important;
         margin-right: auto !important;
         display: block !important;
-        -webkit-text-stroke: 1.0px #000000 !important;
-        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.7) !important;
-        white-space: nowrap !important;
-    }}
 
-    /* Ajuste automático exclusivo para Celulares */
-    @media (max-width: 768px) {{
-        h1, .titulo-principal, h1 * {{
-            font-size: 2.8rem !important; /* Se ajusta en celular para caber perfecto en 1 sola línea */
-            -webkit-text-stroke: 0.8px #000000 !important;
-        }}
+        /* Contorno negro para resaltar sobre la imagen */
+        -webkit-text-stroke: 0.8px #000000 !important;
+
+        /* Sombra adicional para dar profundidad */
+        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.7) !important;
     }}
     
     /* 3. Textos generales (sin afectar contenedores div) */
