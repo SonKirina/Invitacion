@@ -64,6 +64,7 @@ st.markdown(
         margin-left: auto !important;
         margin-right: auto !important;
         display: block !important;
+        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6) !important;
     }}
     
     /* 3. Textos generales (sin afectar contenedores div) */
