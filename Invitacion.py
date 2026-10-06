@@ -53,20 +53,22 @@ st.markdown(
     }}
     
     /* 2. Título principal */
-    h1, .titulo-principal, h1 *  {{
+    h1, .titulo-principal, h1 * {{
         color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 800 !important;
-        font-size: 5.5rem !important;
+        font-size: 6.5rem !important; /* Puedes subirlo a 6.0rem, 6.5rem, etc. */
         letter-spacing: 1px !important;
         text-align: center !important;
         width: 100% !important;
         margin-left: auto !important;
         margin-right: auto !important;
         display: block !important;
-        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6) !important;
         -webkit-text-stroke: 1.0px #000000 !important;
         text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.7) !important;
+
+        /* Evita que se rompa en dos renglones */
+        white-space: nowrap !important;
     }}
     
     /* 3. Textos generales (sin afectar contenedores div) */
