@@ -84,36 +84,24 @@ st.markdown(
              2px  3px 8px rgba(0, 0, 0, 0.65) !important;
     }}
     
-    /* Títulos de las casillas dentro del formulario (Nombre completo, ¿Nos acompañarás?, etc.) */
-    [data-testid="stForm"] label, 
-    [data-testid="stForm"] .stWidgetLabel p {{
-        color: #FFFFFF !important; /* Blanco puro */
-        font-family: 'Montserrat', sans-serif !important;
-        font-size: 1.05rem !important;
-        font-weight: 700 !important;
-        
-        /* Contorno negro definido + sombra de relieve */
-        text-shadow: 
-            -1px -1px 0 #000,  
-             1px -1px 0 #000,
-            -1px  1px 0 #000,
-             1px  1px 0 #000,
-             2px  2px 4px rgba(0, 0, 0, 0.8) !important;
+    /* Da estilo de tarjeta sutil al fondo completo del formulario */
+    [data-testid="stForm"] {{
+        background: rgba(0, 0, 0, 0.45) !important; /* Fondo oscuro elegante con transparencia */
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
     }}
 
-    /* Opciones de la lista desplegable/radio ("Sí, ahí estaré...", etc.) */
+    /* Textos nítidos en blanco sin contorno artificial */
+    [data-testid="stForm"] label, 
+    [data-testid="stForm"] .stWidgetLabel p,
     [data-testid="stForm"] [data-testid="stRadioButton"] p {{
-        color: #FFFFFF !important; /* Blanco puro */
+        color: #FFFFFF !important;
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 600 !important;
-
-        /* Contorno negro un poco más sutil para texto más pequeño */
-        text-shadow: 
-            -0.8px -0.8px 0 #000,  
-             0.8px -0.8px 0 #000,
-            -0.8px  0.8px 0 #000,
-             0.8px  0.8px 0 #000,
-             1px  1px 3px rgba(0, 0, 0, 0.8) !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important; /* Sombra suave de profundidad */
     }}
     
     /* Tarjetas estilo cristal */
