@@ -35,7 +35,7 @@ svg_modificado = svg_contenido.replace(
 st.markdown(
     f"""
 <div style="text-align: center; width: 100%; margin-top: 10px; margin-bottom: 20px;">
-<div style="max-width: 550px; margin: 0 auto;">
+<div style="max-width: 900px; margin: 0 auto;">
 {svg_modificado}
 </div>
 </div>
