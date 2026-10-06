@@ -38,10 +38,6 @@ st.markdown(
 )
 
 
-# Reemplaza 'tu_diseno.svg' por el nombre de tu archivo SVG
-# Cambia el numero 500 para hacerlo tan grande como quieras (ej. 600, 700)
-renderizar_svg("tu_diseno.svg", ancho=500)
-
 # Carga de imágenes locales
 fondo_b64 = get_image_base64("Fondo_5.jpg")
 
