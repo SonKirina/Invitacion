@@ -45,7 +45,7 @@ st.markdown(
 
     /* Títulos principales (Negro Intenso) */
     h1, h2, h3 {{
-        color: #FFF8E70 !important;
+        color: #000080 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 700 !important;
@@ -61,7 +61,7 @@ st.markdown(
     /* Párrafos, etiquetas y texto en general (Negro Carbón) */
     p, span, label, div, b, strong {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #FFF8E7 !important;
+        color: #000080 !important;
     }}
 
     /* Tarjetas estilo cristal */
