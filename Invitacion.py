@@ -44,18 +44,21 @@ st.markdown(
     }}
 
     /* Títulos principales (Negro Intenso) */
-    h1, h2, h3 {{
+    h2, h3 {{
         color: #C0C0C0 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 700 !important;
     }}
 
-    h1 {{
-        font-size: 3rem !important;
+    h1, div h1 {{
+        color: #FFF8E7 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-weight: 600;
+        font-size: 3.5rem !important;
         letter-spacing: 2px;
-        margin-bottom: 0px !important;
-        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); /* Sombra clara para lectura fácil */
+        text-align: center;
+        text-shadow: 2px 2px 6px rgba(0,0,0,0.65);
     }}
 
     /* Párrafos, etiquetas y texto en general (Negro Carbón) */
