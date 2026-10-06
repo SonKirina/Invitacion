@@ -44,12 +44,22 @@ st.markdown(
         background-color: rgba(0,0,0,0);
     }}
 
-    /* 1. Títulos secundarios */
-    h2, h3, h2 *, h3 * {{
+    /* --- EDITAR H2 INDIVIDUALMENTE --- */
+    h2, h2 * {{
         color: #000000 !important;
         font-family: 'Cormorant Garamond', serif !important;
-        text-align: center;
-        font-weight: 600;
+        font-size: 2.2rem !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+    }}
+
+    /* --- EDITAR H3 INDIVIDUALMENTE --- */
+    h3, h3 * {{
+        color: #333333 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.8rem !important;
+        font-weight: 600 !important;
+        text-align: center !important;
     }}
     
     /* 2. Título principal */
