@@ -63,6 +63,15 @@ st.markdown(
         background-color: rgba(0,0,0,0);
     }}
 
+
+    h4 * {{
+        color: #000000 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.8rem !important;
+        font-weight: 800 !important;
+        text-align: center !important;
+    }}
+    
     /* --- EDITAR H2 INDIVIDUALMENTE --- */
     h2, h2 * {{
         color: #FFFFFF !important;
@@ -190,7 +199,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown(
-    "<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #FFFFFF !important; font-weight: 600;'>¡NOS CASAMOS!</p>",
+    "<h4 style='text-align: center; font-size: 1.1rem; font-style: italic; color: #FFFFFF !important; font-weight: 600;'>¡NOS CASAMOS!<h4>",
     unsafe_allow_html=True,
 )
 
