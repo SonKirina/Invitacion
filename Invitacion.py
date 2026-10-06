@@ -28,15 +28,22 @@ def cargar_svg(path_archivo):
 # Renderizar en la pantalla
 svg_contenido = cargar_svg("Frame 45.svg")  # pon aquí el nombre de tu archivo
 
-svg_modificado = svg_contenido.replace(
+# 1. Eliminamos atributos width y height fijos del código del SVG para que sea totalmente flexible
+svg_escalable = re.sub(
+    r'(<svg[^>]*?)\s+(width|height)=["\'][^"\']*["\']', r"\1", svg_contenido
+)
+
+# 2. Le inyectamos style="width: 100%; height: auto;" directamente a la etiqueta <svg>
+svg_escalable = svg_escalable.replace(
     "<svg", '<svg style="width: 100% !important; height: auto !important;"'
 )
 
+# 3. Lo renderizamos envolviéndolo en el contenedor deseado (ajusta max-width a tu gusto)
 st.markdown(
     f"""
 <div style="text-align: center; width: 100%; margin-top: 10px; margin-bottom: 20px;">
-<div style="max-width: 900px; margin: 0 auto;">
-{svg_modificado}
+<div style="max-width: 600px; margin: 0 auto; display: block;">
+{svg_escalable}
 </div>
 </div>
 """.strip(),
