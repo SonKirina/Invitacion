@@ -29,13 +29,13 @@ st.markdown(f"""
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
     /* Fondo de pantalla usando la foto local Kirina.jpeg con overlay transparente */
-    [data-testid="stAppViewContainer"] {
-        background-image: url({fondo_b64});
+    [data-testid="stAppViewContainer"] {{
+        background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url({fondo_b64});
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
-    }
+    }}
 
     [data-testid="stHeader"] {{
         background-color: rgba(0,0,0,0);
