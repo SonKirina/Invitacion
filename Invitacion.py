@@ -49,7 +49,7 @@ st.markdown(f"""
     
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
     
-    h1 {{
+    titulo-boda {{
         color: #000080 !important;
         font-family: 'Poppins', sans-serif !important;
         text-align: center;
@@ -172,7 +172,10 @@ st.markdown(f"""
 st.markdown("<br>", unsafe_allow_html=True)
 
 
-st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
+st.markdown(
+    '<h1 class="titulo-boda">Ismael & Elizabeth</h1>',
+    unsafe_allow_html=True
+)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #FFD700;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
 
 st.markdown("""
