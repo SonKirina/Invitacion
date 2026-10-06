@@ -207,7 +207,7 @@ st.markdown(
     """
 <div class="card">
     <p style="font-size: 1rem; line-height: 1.6; margin: 0; color: #000000 !important;">
-        Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más queremos los hace aún más especiales. 
+        !NOS CASAMOS! Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más queremos los hace aún más especiales. 
         Queremos que seas parte de esta gran celebración.
     </p>
 </div>
