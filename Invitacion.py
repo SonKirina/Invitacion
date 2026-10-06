@@ -42,7 +42,7 @@ svg_escalable = svg_escalable.replace(
 st.markdown(
     f"""
 <div style="text-align: center; width: 100%; margin-top: 10px; margin-bottom: 20px;">
-<div style="max-width: 600px; margin: 0 auto; display: block;">
+<div style="max-width: 900px; margin: 0 auto; display: block;">
 {svg_escalable}
 </div>
 </div>
