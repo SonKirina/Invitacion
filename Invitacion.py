@@ -88,7 +88,7 @@ st.markdown(
         [data-testid="stForm"] label, 
         [data-testid="stForm"] .stWidgetLabel p {{
             color: #FFFFFF !important; /* <--- Cambia este color (ej. #FAF9F6 para blanco marfil, #C5A059 para dorado) */
-            font-family: 'Cormorant Garamond', sans !important;
+            font-family: 'Cormorant Garamond', serif !important;
             font-size: 1.05rem !important;
             font-weight: 900 !important;
         }}
