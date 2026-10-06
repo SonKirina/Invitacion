@@ -246,7 +246,7 @@ with col2:
     st.markdown(
         """
     <div class="card">
-        <h3>🎉 Recepción & Fiesta</h3>
+        <h3>🎉 Fiesta</h3>
         <p style="font-size: 1.1rem; font-weight: 600; color: #000000 !important;">18 de Diciembre de 2026</p>
         <p style="color: #1a1a1a !important;"><b>Hora:</b> 19:00 hrs</p>
         <p style="color: #1a1a1a !important;"><b>Lugar:</b> Salón Metropolitan: Piso 1</p>
