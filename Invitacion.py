@@ -314,26 +314,28 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# 1. Nombre principal
-nombre = st.text_input("Nombre completo del invitado(a) principal:")
+# Inicializar estado para el número de acompañantes si no existe
+if "num_acomp" not in st.session_state:
+    st.session_state.num_acomp = 0
 
-# 2. Número de acompañantes (fuera del form para reacondicionar los campos al instante)
-acompanantes = st.number_input(
-    "Número de acompañantes adicionales:",
-    min_value=0,
-    max_value=5,
-    step=1,
-    value=0,
-)
-
-# 3. Formulario para capturar los nombres dinámicos y la confirmación
 with st.form("rsvp_form"):
-    nombres_acompanantes = []
+    # 1. Nombre principal
+    nombre = st.text_input("Nombre completo del invitado(a) principal:")
 
-    # Generación inmediata de campos de texto para acompañantes
+    # 2. Número de acompañantes (actualiza el session_state)
+    acompanantes = st.number_input(
+        "Número de acompañantes adicionales:",
+        min_value=0,
+        max_value=5,
+        step=1,
+        value=st.session_state.num_acomp,
+    )
+
+    # 3. Generar los campos de texto según el número de acompañantes
+    nombres_acompanantes = []
     if acompanantes > 0:
         st.markdown(
-            "<p style='color: #FFFFFF !important; font-weight: 600; margin-top: 10px; margin-bottom: 5px;'>Nombres de tus acompañantes:</p>",
+            "<p style='color: #FFFFFF !important; font-weight: 600; margin-top: 15px; margin-bottom: 5px;'>Nombres de tus acompañantes:</p>",
             unsafe_allow_html=True,
         )
         for i in range(int(acompanantes)):
@@ -342,11 +344,12 @@ with st.form("rsvp_form"):
             )
             nombres_acompanantes.append(nombre_acomp)
 
+    # 4. Asistencia y Restricciones
     asistencia = st.radio(
         "¿Nos acompañarás?",
         [
             "Sí, ahí estaré con mucho gusto 🥂",
-            "Lamentablemente no podré asistir ❤️️",
+            "Lamentablemente no podré asistir ❤️",
         ],
     )
 
