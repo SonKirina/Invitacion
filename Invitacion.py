@@ -25,14 +25,14 @@ novios_b64 = get_image_base64("Fondo_2.jpg")
 
 # Estilo visual avanzado con CSS y EFECTO DE PÉTALOS CAYENDO
 st.markdown(f"""
-    <style>0
+    <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
     /* Fondo de pantalla usando la foto local Kirina.jpeg con overlay transparente */
     [data-testid="stAppViewContainer"] {{
-        background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url("{fondo_b64}");
+        background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url({fondo_b64});
         background-size: cover;
-        background-position: center;0
+        background-position: center;
         background-repeat: no-repeat;
         background-attachment: fixed;
     }}
@@ -168,7 +168,10 @@ st.markdown("<br>", unsafe_allow_html=True)
 if novios_b64:
     st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="Ismael & Elizabeth">', unsafe_allow_html=True)
 else:
-    st.image("Fondo_3.jpg", use_container_width=True)
+    try:
+        st.image("Fondo_3.jpg", use_container_width=True)
+    except Exception:
+        st.info("📷 [Imagen de portada]")
 
 st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #7a6a53;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
@@ -258,17 +261,17 @@ g_col1, g_col2, g_col3 = st.columns(3)
 with g_col1:
     try:
         st.image("Kirina.jpeg", use_container_width=True)
-    except:
+    except Exception:
         st.write("📷 Foto 1")
 with g_col2:
     try:
         st.image("foto2.jpg", use_container_width=True)
-    except:
+    except Exception:
         st.write("📷 Foto 2")
 with g_col3:
     try:
         st.image("foto3.jpg", use_container_width=True)
-    except:
+    except Exception:
         st.write("📷 Foto 3")
 
 # ----------------- NOTAS IMPORTANTES -----------------
