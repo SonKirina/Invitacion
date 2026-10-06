@@ -20,7 +20,7 @@ def get_image_base64(file_path):
         return ""
 
 # Carga de imágenes locales
-fondo_b64 = get_image_base64("Fondo_5.jpeg")
+fondo_b64 = get_image_base64("Fondo_5.jpg")
 
 # Estilo visual avanzado con CSS y EFECTO DE PÉTALOS CAYENDO
 st.markdown(f"""
