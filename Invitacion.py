@@ -322,12 +322,7 @@ with st.form("rsvp_form"):
             "Lamentablemente no podré asistir ❤️",
         ],
     )
-    acompanantes = st.number_input(
-        "Número de acompañantes adicionales:",
-        min_value=0,
-        max_value=5,
-        step=1,
-    )
+
     restricciones = st.text_input("Alergias o restricciones alimentarias:")
 
     submit_button = st.form_submit_button(label="Enviar Confirmación ✨")
