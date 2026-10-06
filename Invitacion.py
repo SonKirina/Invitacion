@@ -3,7 +3,6 @@ from datetime import datetime
 import pandas as pd
 import streamlit as st
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap');
 
 # Configuración de la página
 st.set_page_config(
