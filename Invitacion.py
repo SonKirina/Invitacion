@@ -43,12 +43,12 @@ st.markdown(
         background-color: rgba(0,0,0,0);
     }}
 
-    /* Títulos principales (Negro Intenso) */
-    h2, h3 {{
-        color: #C0C0C0 !important;
+    /* 3. Estilo para otros títulos secundarios (h2 y h3) */
+    h2, h3, div h2, div h3 {{
+        color: #000000 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
-        font-weight: 700 !important;
+        font-weight: 600;
     }}
 
     h1, div h1 {{
