@@ -51,13 +51,14 @@ st.markdown(
     
     /* 2. Título principal */
     h1, .titulo-principal, h1 * {{
-        color: #FFD700 !important;
-        font-family: 'Cormorant Garamond', serif !important;
-        font-weight: 600;
-        font-size: 3.5rem !important;
-        letter-spacing: 2px;
-        text-align: center;
-        text-shadow: 2px 2px 6px rgba(0,0,0,0.65);
+        color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
+        font-family: 'Playfair Display', serif !important;
+        font-weight: 700 !important;
+        font-size: 3.8rem !important;
+        letter-spacing: 1px !important;
+        text-align: center !important;
+        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6) !important;
+        font-feature-settings: "liga" 1, "dlig" 1 !important;
     }}
     
     /* 3. Textos generales (sin afectar contenedores div) */
