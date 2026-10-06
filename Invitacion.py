@@ -61,7 +61,7 @@ st.markdown(
     /* Párrafos, etiquetas y texto en general (Negro Carbón) */
     p, span, label, div, b, strong {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #1a1a1a !important;
+        color: #FFF8E7 !important;
     }}
 
     /* Tarjetas estilo cristal */
