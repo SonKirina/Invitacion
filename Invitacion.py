@@ -270,7 +270,7 @@ st.markdown(
     <p style="color: #000000 !important;">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
     <p style="color: #000000 !important;">
         • <b>Liverpool:</b>
-        <a href="https://share.google/bbgOiCJZ5KLbHyMmv" target="_blank" style="color: #1a0dab; font-weight: 600; text-decoration: underline;">Ver mesa de regalos aquí</a>
+        <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60030339" target="_blank" style="color: #1a0dab; font-weight: 600; text-decoration: underline;">Ver mesa de regalos aquí</a>
     </p>
     <p style="color: #000000 !important;">• Contaremos con lluvia de sobres en la recepción.</p>
 </div>
