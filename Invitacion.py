@@ -30,7 +30,7 @@ st.markdown(f"""
 
     /* Fondo de pantalla usando la foto local Kirina.jpeg con overlay transparente */
     [data-testid="stAppViewContainer"] {{
-        background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.78)), url({fondo_b64});
+        background-image: linear-gradient(rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.38)), url({fondo_b64});
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
