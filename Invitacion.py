@@ -49,7 +49,7 @@ st.markdown(
         color: #000000 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 2.2rem !important;
-        font-weight: 600 !important;
+        font-weight: 800 !important;
         text-align: center !important;
     }}
 
@@ -58,7 +58,7 @@ st.markdown(
         color: #333333 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 1.8rem !important;
-        font-weight: 600 !important;
+        font-weight: 800 !important;
         text-align: center !important;
     }}
     
