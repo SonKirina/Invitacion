@@ -19,6 +19,23 @@ def get_image_base64(file_path):
         return f"data:image/jpeg;base64,{encoded}"
     except FileNotFoundError:
         return ""
+        
+def cargar_svg(path_archivo):
+    with open(path_archivo, "r", encoding="utf-8") as f:
+        return f.read()
+
+
+# Renderizar en la pantalla
+svg_contenido = cargar_svg("Frame 44.svg")  # pon aquí el nombre de tu archivo
+
+st.markdown(
+    f"""
+<div style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+    {svg_contenido}
+</div>
+""",
+    unsafe_allow_html=True,
+)
 
 # Carga de imágenes locales
 fondo_b64 = get_image_base64("Fondo_5.jpg")
