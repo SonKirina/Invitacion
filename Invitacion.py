@@ -314,38 +314,33 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# 1. Selección de número de acompañantes fuera del form para refrescar dinámicamente los campos
-acompanantes = st.number_input(
-    "Número de acompañantes adicionales:",
-    min_value=0,
-    max_value=5,
-    step=1,
-    value=0,
-)
-
-# 2. Formulario principal
 with st.form("rsvp_form"):
+    # 1. Nombre principal
     nombre = st.text_input("Nombre completo del invitado(a) principal:")
 
-    telefono = st.text_input(
-        "Número de teléfono (10 dígitos):",
-        max_chars=10,
-        placeholder="Ej: 6671234567",
+    # 2. Número de acompañantes justo debajo del nombre
+    acompanantes = st.number_input(
+        "Número de acompañantes adicionales:",
+        min_value=0,
+        max_value=5,
+        step=1,
+        value=0,
     )
 
-    # Generación dinámica de los campos de texto para acompañantes
+    # 3. Generación de campos para los nombres de los acompañantes
     nombres_acompanantes = []
     if acompanantes > 0:
         st.markdown(
-            "<p style='color: #FFFFFF !important; font-weight: 600; margin-top: 10px;'>Nombres de tus acompañantes:</p>",
+            "<p style='color: #FFFFFF !important; font-weight: 600; margin-top: 15px; margin-bottom: 5px;'>Nombres de tus acompañantes:</p>",
             unsafe_allow_html=True,
         )
         for i in range(int(acompanantes)):
             nombre_acomp = st.text_input(
-                f"Nombre completo del acompañante {i+1}:", key=f"acomp_{i}"
+                f"Nombre del acompañante {i+1}:", key=f"acomp_{i}"
             )
             nombres_acompanantes.append(nombre_acomp)
 
+    # 4. Asistencia y Restricciones
     asistencia = st.radio(
         "¿Nos acompañarás?",
         [
@@ -360,43 +355,27 @@ with st.form("rsvp_form"):
 
     if submit_button:
         nombre_clean = nombre.strip()
-        telefono_clean = telefono.strip()
-
-        # Limpiar y filtrar nombres de acompañantes
         lista_nombres_acomp = [
             n.strip() for n in nombres_acompanantes if n.strip() != ""
         ]
 
         # Validaciones
         if not nombre_clean:
-            st.error(
-                "Por favor, ingresa tu nombre completo antes de enviar el formulario."
-            )
-
-        elif not re.fullmatch(r"\d{10}", telefono_clean):
-            st.error(
-                "Por favor, ingresa un número de teléfono válido a 10 dígitos (solo números)."
-            )
+            st.error("Por favor, ingresa tu nombre completo antes de enviar.")
 
         elif acompanantes > 0 and len(lista_nombres_acomp) < acompanantes:
             st.error(
-                "Por favor, completa los nombres de todos los acompañantes indicados."
+                "Por favor, completa los nombres de todos los acompañantes."
             )
 
         else:
-            # Intentar abrir el CSV existente
             try:
                 df = pd.read_csv("asistentes.csv")
-                if "Telefono" in df.columns:
-                    df["Telefono"] = df["Telefono"].astype(str)
-                else:
-                    df["Telefono"] = ""
             except FileNotFoundError:
                 df = pd.DataFrame(
                     columns=[
                         "Fecha_Registro",
                         "Nombre",
-                        "Telefono",
                         "Asistencia",
                         "Acompañantes",
                         "Nombres_Acompañantes",
@@ -405,41 +384,33 @@ with st.form("rsvp_form"):
                     ]
                 )
 
-            # Verificar teléfono duplicado
-            if (
-                not df.empty
-                and "Telefono" in df.columns
-                and telefono_clean in df["Telefono"].values
-            ):
-                st.warning(
-                    f"El número {telefono_clean} ya ha sido registrado previamente. ¡Muchas gracias!"
-                )
-            else:
-                # Guardar la lista de acompañantes unida por comas
-                cadena_acompanantes = ", ".join(lista_nombres_acomp) if lista_nombres_acomp else "Ninguno"
+            cadena_acompanantes = (
+                ", ".join(lista_nombres_acomp)
+                if lista_nombres_acomp
+                else "Ninguno"
+            )
 
-                nuevo_dato = pd.DataFrame([
-                    {
-                        "Fecha_Registro": datetime.now().strftime(
-                            "%Y-%m-%d %H:%M:%S"
-                        ),
-                        "Nombre": nombre_clean,
-                        "Telefono": telefono_clean,
-                        "Asistencia": asistencia,
-                        "Acompañantes": acompanantes,
-                        "Nombres_Acompañantes": cadena_acompanantes,
-                        "Restricciones": restricciones,
-                        "Mesa": "Por asignar",
-                    }
-                ])
+            nuevo_dato = pd.DataFrame([
+                {
+                    "Fecha_Registro": datetime.now().strftime(
+                        "%Y-%m-%d %H:%M:%S"
+                    ),
+                    "Nombre": nombre_clean,
+                    "Asistencia": asistencia,
+                    "Acompañantes": acompanantes,
+                    "Nombres_Acompañantes": cadena_acompanantes,
+                    "Restricciones": restricciones,
+                    "Mesa": "Por asignar",
+                }
+            ])
 
-                df = pd.concat([df, nuevo_dato], ignore_index=True)
-                df.to_csv("asistentes.csv", index=False)
+            df = pd.concat([df, nuevo_dato], ignore_index=True)
+            df.to_csv("asistentes.csv", index=False)
 
-                st.balloons()
-                st.success(
-                    f"¡Muchas gracias {nombre_clean}! Hemos recibido tu confirmación."
-                )
+            st.balloons()
+            st.success(
+                f"¡Muchas gracias {nombre_clean}! Hemos recibido tu confirmación."
+            )
 
 # ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
