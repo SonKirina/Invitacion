@@ -41,16 +41,16 @@ st.markdown(
         background-color: rgba(0,0,0,0);
     }}
 
-    /* Estilo para otros títulos secundarios (h2 y h3) */
-    h2, h3, div h2, div h3 {{
+    /* 1. Títulos secundarios */
+    h2, h3, h2 *, h3 * {{
         color: #000000 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
         font-weight: 600;
     }}
-
-    /* Estilo exacto para Ismael & Elizabeth */
-    h1, div h1, .titulo-principal {{
+    
+    /* 2. Título principal */
+    h1, .titulo-principal, h1 * {{
         color: #FFD700 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 600;
@@ -59,8 +59,9 @@ st.markdown(
         text-align: center;
         text-shadow: 2px 2px 6px rgba(0,0,0,0.65);
     }}
-
-    p, span, label, div:not(:has(h1)), b, strong {{
+    
+    /* 3. Textos generales (sin afectar contenedores div) */
+    p, label, b, strong, .stMarkdown p {{
         font-family: 'Montserrat', sans-serif !important;
         color: #000000 !important;
     }}
