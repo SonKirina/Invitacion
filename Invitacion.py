@@ -314,15 +314,37 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-with st.form("rsvp_form"):
-    nombre = st.text_input("Nombre completo del invitado(a):")
+# 1. Selección de número de acompañantes fuera del form para refrescar dinámicamente los campos
+acompanantes = st.number_input(
+    "Número de acompañantes adicionales:",
+    min_value=0,
+    max_value=5,
+    step=1,
+    value=0,
+)
 
-    # Campo de teléfono
+# 2. Formulario principal
+with st.form("rsvp_form"):
+    nombre = st.text_input("Nombre completo del invitado(a) principal:")
+
     telefono = st.text_input(
         "Número de teléfono (10 dígitos):",
         max_chars=10,
         placeholder="Ej: 6671234567",
     )
+
+    # Generación dinámica de los campos de texto para acompañantes
+    nombres_acompanantes = []
+    if acompanantes > 0:
+        st.markdown(
+            "<p style='color: #FFFFFF !important; font-weight: 600; margin-top: 10px;'>Nombres de tus acompañantes:</p>",
+            unsafe_allow_html=True,
+        )
+        for i in range(int(acompanantes)):
+            nombre_acomp = st.text_input(
+                f"Nombre completo del acompañante {i+1}:", key=f"acomp_{i}"
+            )
+            nombres_acompanantes.append(nombre_acomp)
 
     asistencia = st.radio(
         "¿Nos acompañarás?",
@@ -332,37 +354,39 @@ with st.form("rsvp_form"):
         ],
     )
 
-    acompanantes = st.number_input(
-        "Número de acompañantes adicionales:",
-        min_value=0,
-        max_value=5,
-        step=1,
-    )
-
     restricciones = st.text_input("Alergias o restricciones alimentarias:")
 
     submit_button = st.form_submit_button(label="Enviar Confirmación ✨")
 
     if submit_button:
-        # Limpiar espacios en blanco
         nombre_clean = nombre.strip()
         telefono_clean = telefono.strip()
 
-        # 1. Validar que el nombre no esté vacío
-        if not nombre_clean:
-            st.error("Por favor, ingresa tu nombre completo antes de enviar.")
+        # Limpiar y filtrar nombres de acompañantes
+        lista_nombres_acomp = [
+            n.strip() for n in nombres_acompanantes if n.strip() != ""
+        ]
 
-        # 2. Validar formato de teléfono (exactamente 10 dígitos)
+        # Validaciones
+        if not nombre_clean:
+            st.error(
+                "Por favor, ingresa tu nombre completo antes de enviar el formulario."
+            )
+
         elif not re.fullmatch(r"\d{10}", telefono_clean):
             st.error(
                 "Por favor, ingresa un número de teléfono válido a 10 dígitos (solo números)."
             )
 
+        elif acompanantes > 0 and len(lista_nombres_acomp) < acompanantes:
+            st.error(
+                "Por favor, completa los nombres de todos los acompañantes indicados."
+            )
+
         else:
-            # Intentar leer el CSV existente
+            # Intentar abrir el CSV existente
             try:
                 df = pd.read_csv("asistentes.csv")
-                # Asegurar que la columna Telefono se lea como texto para comparar bien
                 if "Telefono" in df.columns:
                     df["Telefono"] = df["Telefono"].astype(str)
                 else:
@@ -375,21 +399,25 @@ with st.form("rsvp_form"):
                         "Telefono",
                         "Asistencia",
                         "Acompañantes",
+                        "Nombres_Acompañantes",
                         "Restricciones",
                         "Mesa",
                     ]
                 )
 
-            # 3. Validar si el teléfono ya está registrado
+            # Verificar teléfono duplicado
             if (
                 not df.empty
                 and "Telefono" in df.columns
                 and telefono_clean in df["Telefono"].values
             ):
                 st.warning(
-                    f"El número {telefono_clean} ya ha sido registrado previamente. ¡Gracias!"
+                    f"El número {telefono_clean} ya ha sido registrado previamente. ¡Muchas gracias!"
                 )
             else:
+                # Guardar la lista de acompañantes unida por comas
+                cadena_acompanantes = ", ".join(lista_nombres_acomp) if lista_nombres_acomp else "Ninguno"
+
                 nuevo_dato = pd.DataFrame([
                     {
                         "Fecha_Registro": datetime.now().strftime(
@@ -399,6 +427,7 @@ with st.form("rsvp_form"):
                         "Telefono": telefono_clean,
                         "Asistencia": asistencia,
                         "Acompañantes": acompanantes,
+                        "Nombres_Acompañantes": cadena_acompanantes,
                         "Restricciones": restricciones,
                         "Mesa": "Por asignar",
                     }
@@ -463,7 +492,7 @@ if nombre_buscar.strip() != "":
 st.markdown("<br><br>", unsafe_allow_html=True)
 with st.expander("🔐 Panel de Administración (Novios)"):
     pin = st.text_input("Ingresa el PIN de administrador:", type="password")
-    if pin == "2026":
+    if pin == "1812":
         try:
             df_asistentes = pd.read_csv("asistentes.csv")
 
