@@ -65,7 +65,7 @@ st.markdown(
         margin-right: auto !important;
         display: block !important;
         text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.6) !important;
-        -webkit-text-stroke: 1.5px #000000 !important;
+        -webkit-text-stroke: 1.0px #000000 !important;
         text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.7) !important;
     }}
     
