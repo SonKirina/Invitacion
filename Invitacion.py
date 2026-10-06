@@ -314,24 +314,21 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Inicializar estado para el número de acompañantes si no existe
-if "num_acomp" not in st.session_state:
-    st.session_state.num_acomp = 0
-
-with st.form("rsvp_form"):
+# Creamos un contenedor reactivo que mantendrá la tarjeta transparente
+with st.container():
     # 1. Nombre principal
     nombre = st.text_input("Nombre completo del invitado(a) principal:")
 
-    # 2. Número de acompañantes (actualiza el session_state)
+    # 2. Número de acompañantes (al cambiar este número, Streamlit reacciona de inmediato)
     acompanantes = st.number_input(
         "Número de acompañantes adicionales:",
         min_value=0,
         max_value=5,
         step=1,
-        value=st.session_state.num_acomp,
+        value=0,
     )
 
-    # 3. Generar los campos de texto según el número de acompañantes
+    # 3. Campos dinámicos para nombres de acompañantes
     nombres_acompanantes = []
     if acompanantes > 0:
         st.markdown(
@@ -355,14 +352,16 @@ with st.form("rsvp_form"):
 
     restricciones = st.text_input("Alergias o restricciones alimentarias:")
 
-    submit_button = st.form_submit_button(label="Enviar Confirmación ✨")
+    # Botón normal (sustituye al form_submit_button)
+    enviar = st.button("Enviar Confirmación ✨", use_container_width=True)
 
-    if submit_button:
+    if enviar:
         nombre_clean = nombre.strip()
         lista_nombres_acomp = [
             n.strip() for n in nombres_acompanantes if n.strip() != ""
         ]
 
+        # Validaciones
         if not nombre_clean:
             st.error(
                 "Por favor, ingresa tu nombre completo antes de enviar la confirmación."
@@ -370,7 +369,7 @@ with st.form("rsvp_form"):
 
         elif acompanantes > 0 and len(lista_nombres_acomp) < acompanantes:
             st.error(
-                "Por favor, completa los nombres de todos los acompañantes."
+                "Por favor, completa los nombres de todos tus acompañantes."
             )
 
         else:
