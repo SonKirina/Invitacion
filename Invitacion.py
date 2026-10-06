@@ -245,21 +245,6 @@ with col2:
         unsafe_allow_html=True,
     )
 
-# ----------------- ITINERARIO -----------------
-st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
-st.markdown("<h2>📋 Itinerario</h2>", unsafe_allow_html=True)
-
-st.markdown(
-    """
-<div class="card" style="text-align: left; padding-left: 30px;">
-    <p style="color: #000000 !important;"><b>14:00 hrs</b> — 💍 Misa / Ceremonia Religiosa</p>
-    <p style="color: #000000 !important;"><b>19:00 hrs</b> — 🥂 Recepción y Cóctel de Bienvenida</p>
-    <p style="color: #000000 !important;"><b>20:30 hrs</b> — 🍽️ Banquete y Brindis</p>
-    <p style="color: #000000 !important;"><b>21:30 hrs</b> — 💃 ¡Apertura de Pista y Fiesta!</p>
-</div>
-""",
-    unsafe_allow_html=True,
-)
 
 # ----------------- GALERÍA DE FOTOS LOCALES -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
