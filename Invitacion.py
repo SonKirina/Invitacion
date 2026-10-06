@@ -55,7 +55,7 @@ st.markdown(f"""
 
     p, span, label, div {{
         font-family: 'Montserrat', sans-serif !important;
-        color: #4a4a4a;
+        color: #D4AF37;
     }}
 
     /* Tarjetas estilo cristal (Glassmorphism) */
