@@ -250,4 +250,191 @@ with col2:
         <p style="font-size: 1.1rem; font-weight: 600; color: #000000 !important;">18 de Diciembre de 2026</p>
         <p style="color: #1a1a1a !important;"><b>Hora:</b> 19:00 hrs</p>
         <p style="color: #1a1a1a !important;"><b>Lugar:</b> Salón Metropolitan: Piso 1</p>
-        <p style="font-size: 0.9rem; color: #33333
+        <p style="font-size: 0.9rem; color: #333333 !important;">Culiacán, Sinaloa</p>
+        <a href="https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7943447,-107.4047708,16.67z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="text-decoration: none;">
+            <p style="color: #000000 !important; font-weight: 700; margin-top: 10px; text-decoration: underline;">🗺️ Ubicación de la Fiesta</p>
+        </a>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
+
+# ----------------- ITINERARIO -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>📋 Itinerario</h2>", unsafe_allow_html=True)
+
+st.markdown(
+    """
+<div class="card" style="text-align: left; padding-left: 30px;">
+    <p style="color: #000000 !important;"><b>14:00 hrs</b> — 💍 Misa / Ceremonia Religiosa</p>
+    <p style="color: #000000 !important;"><b>19:00 hrs</b> — 🥂 Recepción y Cóctel de Bienvenida</p>
+    <p style="color: #000000 !important;"><b>20:30 hrs</b> — 🍽️ Banquete y Brindis</p>
+    <p style="color: #000000 !important;"><b>21:30 hrs</b> — 💃 ¡Apertura de Pista y Fiesta!</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+# ----------------- GALERÍA DE FOTOS LOCALES -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>📸 Nuestra Historia</h2>", unsafe_allow_html=True)
+
+g_col1, g_col2, g_col3 = st.columns(3)
+with g_col1:
+    try:
+        st.image("Kirina.jpeg", use_container_width=True)
+    except Exception:
+        st.write("📷 Foto 1")
+with g_col2:
+    try:
+        st.image("foto2.jpg", use_container_width=True)
+    except Exception:
+        st.write("📷 Foto 2")
+with g_col3:
+    try:
+        st.image("foto3.jpg", use_container_width=True)
+    except Exception:
+        st.write("📷 Foto 3")
+
+# ----------------- NOTAS IMPORTANTES -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>💡 Información Importante</h2>", unsafe_allow_html=True)
+
+st.markdown(
+    """
+<div class="card">
+    <h3 style="font-size: 1.3rem;">👗 Código de Vestimenta</h3>
+    <p style="color: #000000 !important;"><b>Formal / Rigurosa Etiqueta</b></p>
+    <p style="font-size: 0.9rem; color: #222222 !important;">Les pedimos amablemente reservar los tonos blanco, marfil y crema para la novia.</p>
+    <hr style="border: 0; border-top: 1px solid #ccc; margin: 15px 0;">
+    <h3 style="font-size: 1.3rem;">🎁 Mesa de Regalos</h3>
+    <p style="color: #000000 !important;">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
+    <p style="color: #000000 !important;">• <b>Liverpool:</b> Evento No. 123456</p>
+    <p style="color: #000000 !important;">• Contaremos con lluvia de sobres en la recepción.</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+# ----------------- FORMULARIO RSVP -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>💌 Confirmación de Asistencia</h2>", unsafe_allow_html=True)
+
+st.markdown(
+    """
+<div class="card">
+    <p style="color: #000000 !important;">Por favor confirma tu asistencia antes del <b>15 de Noviembre de 2026</b>.</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+with st.form("rsvp_form"):
+    nombre = st.text_input("Nombre completo del invitado(a):")
+    asistencia = st.radio(
+        "¿Nos acompañarás?",
+        [
+            "Sí, ahí estaré con mucho gusto 🥂",
+            "Lamentablemente no podré asistir ❤️",
+        ],
+    )
+    acompanantes = st.number_input(
+        "Número de acompañantes adicionales:",
+        min_value=0,
+        max_value=5,
+        step=1,
+    )
+    restricciones = st.text_input("Alergias o restricciones alimentarias:")
+
+    submit_button = st.form_submit_button(label="Enviar Confirmación ✨")
+
+    if submit_button:
+        if nombre.strip() == "":
+            st.error("Por favor, ingresa tu nombre completo antes de enviar.")
+        else:
+            nuevo_dato = pd.DataFrame([
+                {
+                    "Fecha_Registro": datetime.now().strftime(
+                        "%Y-%m-%d %H:%M:%S"
+                    ),
+                    "Nombre": nombre,
+                    "Asistencia": asistencia,
+                    "Acompañantes": acompanantes,
+                    "Restricciones": restricciones,
+                    "Mesa": "Por asignar",
+                }
+            ])
+
+            try:
+                df = pd.read_csv("asistentes.csv")
+                df = pd.concat([df, nuevo_dato], ignore_index=True)
+            except FileNotFoundError:
+                df = nuevo_dato
+            df.to_csv("asistentes.csv", index=False)
+
+            st.balloons()
+            st.success(
+                f"¡Muchas gracias {nombre}! Hemos recibido tu confirmación."
+            )
+
+# ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>🍽️ Consulta tu Mesa</h2>", unsafe_allow_html=True)
+
+st.markdown(
+    """
+<div class="card">
+    <p style="color: #000000 !important;">Ingresa tu nombre tal como lo registraste para consultar tu mesa asignada.</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+nombre_buscar = st.text_input("Escribe tu nombre:", key="buscar_mesa")
+
+if nombre_buscar.strip() != "":
+    try:
+        df_mesas = pd.read_csv("asistentes.csv")
+        if "Mesa" in df_mesas.columns:
+            resultado = df_mesas[
+                df_mesas["Nombre"].str.contains(
+                    nombre_buscar, case=False, na=False
+                )
+            ]
+
+            if not resultado.empty:
+                for idx, row in resultado.iterrows():
+                    mesa_asignada = row.get("Mesa", "Aún no asignada")
+                    if (
+                        pd.isna(mesa_asignada)
+                        or str(mesa_asignada).strip() == ""
+                    ):
+                        mesa_asignada = "Por asignar"
+
+                    st.info(
+                        f"👤 **{row['Nombre']}**: Tu mesa asignada es la **Mesa"
+                        f" {mesa_asignada}** 🥂"
+                    )
+            else:
+                st.warning(
+                    "No encontramos ninguna confirmación con ese nombre."
+                )
+        else:
+            st.info("La asignación de mesas aún no está disponible.")
+    except FileNotFoundError:
+        st.info("Aún no hay confirmaciones registradas.")
+
+# ----------------- PANEL DE ADMINISTRACIÓN -----------------
+st.markdown("<br><br>", unsafe_allow_html=True)
+with st.expander("🔐 Panel de Administración (Novios)"):
+    pin = st.text_input("Ingresa el PIN de administrador:", type="password")
+    if pin == "2026":
+        try:
+            df_asistentes = pd.read_csv("asistentes.csv")
+
+            if "Mesa" not in df_asistentes.columns:
+                df_asistentes["Mesa"] = "Por asignar"
+
+            st.dataframe(df_asistentes)
+        except FileNotFoundError:
+            st.info("No hay lista de asistentes creada aún.")
