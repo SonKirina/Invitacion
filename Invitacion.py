@@ -67,10 +67,10 @@ st.markdown(
 
     /* Contorno limpio + sombra suave (sin deformar el trazo interno de la letra) */
         text-shadow: 
-            -1px -1px 0 #000,  
-             1px -1px 0 #000,
-            -1px  1px 0 #000,
-             1px  1px 0 #000,
+            -0.5px -0.5px 0 #000,  
+             0.5px -0.5px 0 #000,
+            -0.5px  0.5px 0 #000,
+             0.5px  0.5px 0 #000,
              2px  3px 8px rgba(0, 0, 0, 0.65) !important;
     }}
     
