@@ -199,7 +199,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown(
-    "<h4 style='text-align: center; font-size: 1.1rem; font-style: italic; color: #FFFFFF !important; font-weight: 600;'>¡NOS CASAMOS!<h4>",
+    "<h4 style='text-align: center; font-size: 1.1rem; font-style: italic; color: #FFFFFF !important; font-weight: 600;'>¡NOS CASAMOS!</h4>",
     unsafe_allow_html=True,
 )
 
