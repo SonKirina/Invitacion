@@ -168,7 +168,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 if novios_b64:
     st.markdown(f'<img src="{novios_b64}" class="hero-photo" alt="Ismael & Elizabeth">', unsafe_allow_html=True)
 else:
-    st.image("Kirina.jpeg", use_container_width=True)
+    st.image("Fondo.jpeg", use_container_width=True)
 
 st.markdown("<h1>Ismael & Elizabeth</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; font-style: italic; color: #7a6a53;'>¡NOS CASAMOS!</p>", unsafe_allow_html=True)
