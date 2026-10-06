@@ -31,7 +31,7 @@ svg_contenido = cargar_svg("Frame 45.svg")  # pon aquí el nombre de tu archivo
 st.markdown(
     f"""
 <div style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
-    <div style="width: 80%; display: inline-block;">
+    <div style="width: 120%; display: inline-block;">
         {svg_contenido}
     </div>
 </div>
