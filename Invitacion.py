@@ -52,7 +52,7 @@ st.markdown(
         font-weight: 600;
     }}
     
-/* 2. Título principal */
+    /* 2. Título principal */
     h1, .titulo-principal, h1 * {{
         color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
         font-family: 'Cormorant Garamond', serif !important;
