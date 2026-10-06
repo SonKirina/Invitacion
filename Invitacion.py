@@ -57,7 +57,7 @@ st.markdown(
         color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 700 !important;
-        font-size: 7.0rem !important;
+        font-size: clamp(2.8rem, 5.5vw, 4.5rem) !important;
         letter-spacing: 1px !important;
         text-align: center !important;
         width: 100% !important;
