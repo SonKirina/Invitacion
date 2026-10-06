@@ -1,61 +1,35 @@
 import base64
-from datetime import datetime
-import pandas as pd
 import streamlit as st
 
-
-# ============================================================
-# CONFIGURACIÓN DE LA PÁGINA
-# ============================================================
-
+# Configuración inicial de la página
 st.set_page_config(
-    page_title="Boda de Ismael & Elizabeth 💍",
+    page_title="Invitación de Boda",
     page_icon="💍",
     layout="centered",
+    initial_sidebar_state="collapsed",
 )
 
 
-# ============================================================
-# FUNCIÓN PARA CONVERTIR IMÁGENES A BASE64
-# ============================================================
-
-def get_image_base64(file_path):
+# Función para convertir imágenes locales a Base64 para usarlas en CSS
+def cargar_imagen_base64(ruta_archivo):
     try:
-        with open(file_path, "rb") as image_file:
-            encoded = base64.b64encode(image_file.read()).decode()
-
-        return f"data:image/jpeg;base64,{encoded}"
-
+        with open(ruta_archivo, "rb") as archivo:
+            return f"data:image/jpeg;base64,{base64.b64encode(archivo.read()).decode()}"
     except FileNotFoundError:
+        # Retorna una cadena vacía o una imagen por defecto si no se encuentra el archivo
         return ""
 
 
-# ============================================================
-# CARGA DE IMAGEN DE FONDO
-# ============================================================
+# Cargar imagen de fondo (reemplaza 'fondo.jpg' por la ruta de tu imagen)
+fondo_b64 = cargar_imagen_base64("fondo.jpg")
 
-fondo_b64 = get_image_base64("Fondo_5.jpg")
-
-
-# ============================================================
-# CSS / DISEÑO
-# ============================================================
-
+# CSS personalizado optimizado
 st.markdown(
     f"""
     <style>
-
-    /* ======================================================
-       FUENTES
-       ====================================================== */
-
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
-
-    /* ======================================================
-       FONDO PRINCIPAL
-       ====================================================== */
-
+    /* Fondo de pantalla directo */
     [data-testid="stAppViewContainer"] {{
         background-image: url({fondo_b64});
         background-size: cover;
@@ -64,1139 +38,197 @@ st.markdown(
         background-attachment: fixed;
     }}
 
-
-    /* Encabezado transparente */
-
     [data-testid="stHeader"] {{
         background-color: rgba(0,0,0,0);
     }}
 
-
-    /* ======================================================
-       TITULOS SECUNDARIOS
-       H2 / H3
-       ====================================================== */
-
-    h2,
-    h3,
-    div h2,
-    div h3 {{
-        color: #6B5B45 !important;
-        font-family: 'Cormorant Garamond', serif !important;
-        text-align: center;
-        font-weight: 600;
+    /* 1. Estilo base para textos generales */
+    p, span, label, b, strong, .stMarkdown p {{
+        font-family: 'Montserrat', sans-serif !important;
+        color: #000000 !important;
     }}
 
-
-    /* ======================================================
-       TITULO PRINCIPAL
-       ISMAEL & ELIZABETH
-       ====================================================== */
-
-    h1,
-    div h1,
-    .titulo-principal {{
-        color: #FFF8E7 !important;
+    /* 2. Estilo para el título principal (h1) */
+    h1, div h1, .titulo-principal {{
+        color: #FFFFFF !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 600;
         font-size: 3.5rem !important;
         letter-spacing: 2px;
         text-align: center;
         text-shadow: 2px 2px 6px rgba(0,0,0,0.65);
-        margin-bottom: 0px !important;
     }}
 
-
-    /* ======================================================
-       TEXTOS GENERALES
-       ====================================================== */
-
-    p,
-    span,
-    label,
-    div:not(:has(h1)),
-    b,
-    strong {{
-        font-family: 'Montserrat', sans-serif !important;
+    /* 3. Estilo para títulos secundarios (h2 y h3) */
+    h2, h3, div h2, div h3 {{
         color: #000000 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        text-align: center;
+        font-weight: 600;
     }}
 
-
-    /* ======================================================
-       TARJETAS
-       ====================================================== */
-
+    /* Tarjetas estilo cristal */
     .card {{
         background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-
-        border: 1px solid rgba(212, 175, 55, 0.30);
-
+        border: 1px solid rgba(0, 0, 0, 0.15);
         padding: 25px;
         border-radius: 15px;
-
-        box-shadow:
-            0 8px 20px rgba(0, 0, 0, 0.10);
-
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         margin-bottom: 25px;
-
         text-align: center;
     }}
 
-
-    /* ======================================================
-       FOTO CIRCULAR
-       ====================================================== */
-
+    /* Foto circular principal de los novios */
     .hero-photo {{
         width: 100%;
         max-width: 300px;
         height: 300px;
-
         object-fit: cover;
-
         border-radius: 50%;
-
         border: 5px solid #ffffff;
-
-        box-shadow:
-            0 10px 25px rgba(0,0,0,0.15);
-
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         display: block;
-
         margin: 0 auto 20px auto;
     }}
 
-
-    /* ======================================================
-       CUENTA REGRESIVA
-       ====================================================== */
-
     .countdown-box {{
-        background: #6B5B45;
-
+        background: #1a1a1a;
         color: #ffffff !important;
-
         padding: 12px 20px;
-
         border-radius: 30px;
-
         font-size: 1.2rem;
-
         font-weight: 600;
-
         display: inline-block;
-
-        box-shadow:
-            0 4px 12px rgba(107,91,69,0.30);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }}
 
-
-    /* ======================================================
-       BOTONES
-       ====================================================== */
-
     .stButton>button {{
-        background: #6B5B45;
-
+        background: #000000;
         color: white !important;
-
         border-radius: 25px;
-
         width: 100%;
-
         font-weight: 600;
-
         border: none;
-
         padding: 12px;
-
         font-size: 1rem;
-
-        box-shadow:
-            0 4px 15px rgba(107,91,69,0.30);
-
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
     }}
 
-
     .stButton>button:hover {{
-        background: #4F4334;
-
+        background: #333333;
         transform: translateY(-2px);
     }}
 
-
-    /* ======================================================
-       DIVISORES
-       ====================================================== */
-
     .divider {{
         text-align: center;
-
         margin: 25px 0;
-
-        color: #D4AF37 !important;
-
+        color: #000000;
         font-size: 1.5rem;
-
-        font-family: 'Cormorant Garamond', serif !important;
     }}
 
-
-    /* ======================================================
-       PÉTALOS
-       ====================================================== */
-
+    /* --- ANIMACIÓN DE PÉTALOS CAYENDO --- */
     .petal {{
         position: fixed;
-
         top: -10px;
-
         pointer-events: none;
-
         z-index: 9999;
-
         animation: fall linear infinite;
-
         font-size: 1.2rem;
-
         user-select: none;
     }}
 
-
     @keyframes fall {{
-
         0% {{
             opacity: 1;
             top: -10px;
             transform: translateX(0) rotate(0deg);
         }}
-
         100% {{
             opacity: 0.2;
             top: 100vh;
             transform: translateX(100px) rotate(360deg);
         }}
-
     }}
 
-
-    .petal:nth-child(1) {{
-        left: 10%;
-        animation-duration: 8s;
-        animation-delay: 0s;
-    }}
-
-    .petal:nth-child(2) {{
-        left: 25%;
-        animation-duration: 10s;
-        animation-delay: 2s;
-    }}
-
-    .petal:nth-child(3) {{
-        left: 40%;
-        animation-duration: 7s;
-        animation-delay: 4s;
-    }}
-
-    .petal:nth-child(4) {{
-        left: 60%;
-        animation-duration: 9s;
-        animation-delay: 1s;
-    }}
-
-    .petal:nth-child(5) {{
-        left: 75%;
-        animation-duration: 11s;
-        animation-delay: 3s;
-    }}
-
-    .petal:nth-child(6) {{
-        left: 90%;
-        animation-duration: 8s;
-        animation-delay: 5s;
-    }}
-
+    .petal:nth-child(1) {{ left: 10%; animation-duration: 8s; animation-delay: 0s; }}
+    .petal:nth-child(2) {{ left: 25%; animation-duration: 10s; animation-delay: 2s; }}
+    .petal:nth-child(3) {{ left: 40%; animation-duration: 7s; animation-delay: 4s; }}
+    .petal:nth-child(4) {{ left: 60%; animation-duration: 1s; animation-delay: 1s; }}
+    .petal:nth-child(5) {{ left: 75%; animation-duration: 11s; animation-delay: 3s; }}
+    .petal:nth-child(6) {{ left: 90%; animation-duration: 8s; animation-delay: 5s; }}
     </style>
 
-
-    <!-- PÉTALOS -->
-
+    <!-- Contenedor de pétalos -->
     <div class="petal">🌸</div>
     <div class="petal">🌸</div>
     <div class="petal">🌸</div>
     <div class="petal">🌸</div>
     <div class="petal">🌸</div>
     <div class="petal">🌸</div>
-
-    """,
+""",
     unsafe_allow_html=True,
 )
 
+# Encabezado principal
+st.markdown("<h1>NUESTRA BODA</h1>", unsafe_allow_html=True)
 
-# ============================================================
-# ENCABEZADO
-# ============================================================
-
-st.markdown("<br>", unsafe_allow_html=True)
-
-
-# NOMBRES
-
-st.markdown(
-    '<h1 class="titulo-principal">Ismael & Elizabeth</h1>',
-    unsafe_allow_html=True
-)
-
-
-# NOS CASAMOS
-
-st.markdown(
-    """
-    <p style="
-        text-align: center;
-        font-size: 1.4rem;
-        font-family: 'Cormorant Garamond', serif !important;
-        font-style: italic;
-        color: #D4AF37 !important;
-        font-weight: 600;
-        text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-        margin-top: 0px;
-    ">
-        ¡NOS CASAMOS!
-    </p>
-    """,
-    unsafe_allow_html=True,
-)
-
-
-# MENSAJE PRINCIPAL
-
+# Tarjeta principal: Foto y Nombres
 st.markdown(
     """
     <div class="card">
-
-        <p style="
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0;
-            color: #000000 !important;
-        ">
-
-            Hay momentos en la vida que son inolvidables,
-            y compartirlos con las personas que más queremos
-            los hace aún más especiales.
-
-            Queremos que seas parte de esta gran celebración.
-
-        </p>
-
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" class="hero-photo" alt="Novios">
+        <h2>Ana & Carlos</h2>
+        <p>¡Nos casamos y nos encantaría compartir este día tan especial contigo!</p>
+        <div class="countdown-box">Sábado, 15 de Noviembre</div>
     </div>
-    """,
+""",
     unsafe_allow_html=True,
 )
 
-
+# Tarjeta de Detalles del Evento
 st.markdown(
-    '<div class="divider">❦ ❦ ❦</div>',
-    unsafe_allow_html=True
+    """
+    <div class="card">
+        <h3>Detalles del Evento</h3>
+        <p><b>Misa / Ceremonia:</b> 17:00 hrs</p>
+        <p>Parroquia de San Francisco</p>
+        <div class="divider">❖</div>
+        <p><b>Recepción:</b> 19:30 hrs</p>
+        <p>Jardín Las Rosas</p>
+    </div>
+""",
+    unsafe_allow_html=True,
 )
 
-
-# ============================================================
-# CUENTA REGRESIVA
-# ============================================================
-
-st.markdown(
-    "<h2>⏳ Cuenta Regresiva</h2>",
-    unsafe_allow_html=True
-)
-
-
-fecha_boda = datetime(
-    2026,
-    12,
-    18,
-    14,
-    0,
-    0
-)
-
-
-tiempo_restante = fecha_boda - datetime.now()
-
-
-if tiempo_restante.days > 0:
-
-    st.markdown(
-        f"""
-        <div style="
-            text-align: center;
-            margin: 20px 0;
-        ">
-
-            <span class="countdown-box">
-
-                ¡Faltan {tiempo_restante.days}
-                días para el gran día!
-
-            </span>
-
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-else:
-
-    st.markdown(
-        """
-        <div style="
-            text-align: center;
-            margin: 20px 0;
-        ">
-
-            <span class="countdown-box">
-                ¡Hoy es el gran día! 🎉
-            </span>
-
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-st.markdown(
-    '<div class="divider">❦ ❦ ❦</div>',
-    unsafe_allow_html=True
-)
-
-
-# ============================================================
-# DONDE Y CUANDO
-# ============================================================
-
-st.markdown(
-    "<h2>✨ Dónde & Cuándo</h2>",
-    unsafe_allow_html=True
-)
-
-
-col1, col2 = st.columns(2)
-
-
-# ------------------------------------------------------------
-# CEREMONIA
-# ------------------------------------------------------------
-
-with col1:
-
+# Formulario de Confirmación (RSVP)
+with st.container():
     st.markdown(
         """
         <div class="card">
-
-            <h3>
-                ⛪ Ceremonia Religiosa
-            </h3>
-
-            <p style="
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #000000 !important;
-            ">
-                18 de Diciembre de 2026
-            </p>
-
-            <p style="color: #1a1a1a !important;">
-                <b>Hora:</b> 14:00 hrs
-            </p>
-
-            <p style="color: #1a1a1a !important;">
-                <b>Lugar:</b> Parroquia San Gabriel
-            </p>
-
-            <p style="
-                font-size: 0.9rem;
-                color: #333333 !important;
-            ">
-                Culiacán, Sinaloa
-            </p>
-
-            <a
-                href="https://www.google.com/maps/place/Parroquia+de+San+Gabriel/@24.8175739,-107.3979117,16.5z/data=!4m6!3m5!1s0x86bcda0885555555:0xe6e996b30a535946!8m2!3d24.8181119!4d-107.4001306!16s%2Fg%2F11cs9_hkf0?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank"
-                style="text-decoration: none;"
-            >
-
-                <p style="
-                    color: #D4AF37 !important;
-                    font-weight: 700;
-                    margin-top: 10px;
-                    text-decoration: underline;
-                ">
-                    🗺️ Ubicación de la Misa
-                </p>
-
-            </a>
-
+            <h3>Confirmación de Asistencia</h3>
+            <p>Por favor, confirma tu asistencia antes del 15 de Octubre.</p>
         </div>
-        """,
+    """,
         unsafe_allow_html=True,
     )
 
-
-# ------------------------------------------------------------
-# RECEPCIÓN
-# ------------------------------------------------------------
-
-with col2:
-
-    st.markdown(
-        """
-        <div class="card">
-
-            <h3>
-                🎉 Recepción & Fiesta
-            </h3>
-
-            <p style="
-                font-size: 1.1rem;
-                font-weight: 600;
-                color: #000000 !important;
-            ">
-                18 de Diciembre de 2026
-            </p>
-
-            <p style="color: #1a1a1a !important;">
-                <b>Hora:</b> 19:00 hrs
-            </p>
-
-            <p style="color: #1a1a1a !important;">
-                <b>Lugar:</b> Salón Metropolitan: Piso 1
-            </p>
-
-            <p style="
-                font-size: 0.9rem;
-                color: #333333 !important;
-            ">
-                Culiacán, Sinaloa
-            </p>
-
-            <a
-                href="https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7943447,-107.4047708,16.67z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank"
-                style="text-decoration: none;"
-            >
-
-                <p style="
-                    color: #D4AF37 !important;
-                    font-weight: 700;
-                    margin-top: 10px;
-                    text-decoration: underline;
-                ">
-                    🗺️ Ubicación de la Fiesta
-                </p>
-
-            </a>
-
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-# ============================================================
-# ITINERARIO
-# ============================================================
-
-st.markdown(
-    '<div class="divider">❦ ❦ ❦</div>',
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    "<h2>📋 Itinerario</h2>",
-    unsafe_allow_html=True
-)
-
-
-st.markdown(
-    """
-    <div class="card"
-         style="
-            text-align: left;
-            padding-left: 30px;
-         ">
-
-        <p style="color: #000000 !important;">
-            <b>14:00 hrs</b>
-            — 💍 Misa / Ceremonia Religiosa
-        </p>
-
-        <p style="color: #000000 !important;">
-            <b>19:00 hrs</b>
-            — 🥂 Recepción y Cóctel de Bienvenida
-        </p>
-
-        <p style="color: #000000 !important;">
-            <b>20:30 hrs</b>
-            — 🍽️ Banquete y Brindis
-        </p>
-
-        <p style="color: #000000 !important;">
-            <b>21:30 hrs</b>
-            — 💃 ¡Apertura de Pista y Fiesta!
-        </p>
-
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-
-# ============================================================
-# GALERÍA
-# ============================================================
-
-st.markdown(
-    '<div class="divider">❦ ❦ ❦</div>',
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    "<h2>📸 Nuestra Historia</h2>",
-    unsafe_allow_html=True
-)
-
-
-g_col1, g_col2, g_col3 = st.columns(3)
-
-
-with g_col1:
-
-    try:
-        st.image(
-            "Kirina.jpeg",
-            use_container_width=True
+    with st.form("rsvp_form"):
+        nombre = st.text_input("Nombre completo")
+        asistencia = st.radio(
+            "¿Nos acompañarás?", ["Sí, ahí estaré 🥂", "Lamentablemente no podré ir 😔"]
         )
+        pases = st.number_input("Número de pases", min_value=1, max_value=5, value=1)
+        mensaje = st.text_area("Mensaje para los novios (opcional)")
 
-    except Exception:
-        st.write("📷 Foto 1")
+        btn_enviar = st.form_submit_button("Enviar Confirmación")
 
-
-with g_col2:
-
-    try:
-        st.image(
-            "foto2.jpg",
-            use_container_width=True
-        )
-
-    except Exception:
-        st.write("📷 Foto 2")
-
-
-with g_col3:
-
-    try:
-        st.image(
-            "foto3.jpg",
-            use_container_width=True
-        )
-
-    except Exception:
-        st.write("📷 Foto 3")
-
-
-# ============================================================
-# INFORMACIÓN IMPORTANTE
-# ============================================================
-
-st.markdown(
-    '<div class="divider">❦ ❦ ❦</div>',
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    "<h2>💡 Información Importante</h2>",
-    unsafe_allow_html=True
-)
-
-
-st.markdown(
-    """
-    <div class="card">
-
-        <h3 style="font-size: 1.3rem;">
-            👗 Código de Vestimenta
-        </h3>
-
-        <p style="color: #000000 !important;">
-            <b>Formal / Rigurosa Etiqueta</b>
-        </p>
-
-        <p style="
-            font-size: 0.9rem;
-            color: #222222 !important;
-        ">
-            Les pedimos amablemente reservar los tonos
-            blanco, marfil y crema para la novia.
-        </p>
-
-        <hr style="
-            border: 0;
-            border-top: 1px solid #ccc;
-            margin: 15px 0;
-        ">
-
-        <h3 style="font-size: 1.3rem;">
-            🎁 Mesa de Regalos
-        </h3>
-
-        <p style="color: #000000 !important;">
-            Tu presencia es nuestro mejor regalo.
-            Si deseas tener un detalle adicional:
-        </p>
-
-        <p style="color: #000000 !important;">
-            • <b>Liverpool:</b> Evento No. 123456
-        </p>
-
-        <p style="color: #000000 !important;">
-            • Contaremos con lluvia de sobres
-            en la recepción.
-        </p>
-
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-
-# ============================================================
-# FORMULARIO RSVP
-# ============================================================
-
-st.markdown(
-    '<div class="divider">❦ ❦ ❦</div>',
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    "<h2>💌 Confirmación de Asistencia</h2>",
-    unsafe_allow_html=True
-)
-
-
-st.markdown(
-    """
-    <div class="card">
-
-        <p style="color: #000000 !important;">
-
-            Por favor confirma tu asistencia antes del
-            <b>15 de Noviembre de 2026</b>.
-
-        </p>
-
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-
-with st.form("rsvp_form"):
-
-    nombre = st.text_input(
-        "Nombre completo del invitado(a):"
-    )
-
-
-    asistencia = st.radio(
-        "¿Nos acompañarás?",
-        [
-            "Sí, ahí estaré con mucho gusto 🥂",
-            "Lamentablemente no podré asistir ❤️",
-        ],
-    )
-
-
-    acompanantes = st.number_input(
-        "Número de acompañantes adicionales:",
-        min_value=0,
-        max_value=5,
-        step=1,
-    )
-
-
-    restricciones = st.text_input(
-        "Alergias o restricciones alimentarias:"
-    )
-
-
-    submit_button = st.form_submit_button(
-        label="Enviar Confirmación ✨"
-    )
-
-
-    if submit_button:
-
-        if nombre.strip() == "":
-
-            st.error(
-                "Por favor, ingresa tu nombre completo antes de enviar."
-            )
-
-        else:
-
-            nuevo_dato = pd.DataFrame(
-                [
-                    {
-                        "Fecha_Registro":
-                            datetime.now().strftime(
-                                "%Y-%m-%d %H:%M:%S"
-                            ),
-
-                        "Nombre":
-                            nombre,
-
-                        "Asistencia":
-                            asistencia,
-
-                        "Acompañantes":
-                            acompanantes,
-
-                        "Restricciones":
-                            restricciones,
-
-                        "Mesa":
-                            "Por asignar",
-                    }
-                ]
-            )
-
-
-            try:
-
-                df = pd.read_csv(
-                    "asistentes.csv"
+        if btn_enviar:
+            if nombre.strip() != "":
+                st.success(
+                    f"¡Gracias {nombre}! Hemos recibido tu confirmación correctamente."
                 )
-
-                df = pd.concat(
-                    [
-                        df,
-                        nuevo_dato
-                    ],
-                    ignore_index=True
-                )
-
-            except FileNotFoundError:
-
-                df = nuevo_dato
-
-
-            df.to_csv(
-                "asistentes.csv",
-                index=False
-            )
-
-
-            st.balloons()
-
-
-            st.success(
-                f"¡Muchas gracias {nombre}! "
-                "Hemos recibido tu confirmación."
-            )
-
-
-# ============================================================
-# BUSCADOR DE MESA
-# ============================================================
-
-st.markdown(
-    '<div class="divider">❦ ❦ ❦</div>',
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    "<h2>🍽️ Consulta tu Mesa</h2>",
-    unsafe_allow_html=True
-)
-
-
-st.markdown(
-    """
-    <div class="card">
-
-        <p style="color: #000000 !important;">
-
-            Ingresa tu nombre tal como lo registraste
-            para consultar tu mesa asignada.
-
-        </p>
-
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-
-nombre_buscar = st.text_input(
-    "Escribe tu nombre:",
-    key="buscar_mesa"
-)
-
-
-if nombre_buscar.strip() != "":
-
-    try:
-
-        df_mesas = pd.read_csv(
-            "asistentes.csv"
-        )
-
-
-        if "Mesa" in df_mesas.columns:
-
-            resultado = df_mesas[
-                df_mesas["Nombre"].str.contains(
-                    nombre_buscar,
-                    case=False,
-                    na=False
-                )
-            ]
-
-
-            if not resultado.empty:
-
-                for idx, row in resultado.iterrows():
-
-                    mesa_asignada = row.get(
-                        "Mesa",
-                        "Aún no asignada"
-                    )
-
-
-                    if (
-                        pd.isna(mesa_asignada)
-                        or
-                        str(mesa_asignada).strip() == ""
-                    ):
-
-                        mesa_asignada = "Por asignar"
-
-
-                    st.info(
-                        f"👤 **{row['Nombre']}**: "
-                        f"Tu mesa asignada es la "
-                        f"**Mesa {mesa_asignada}** 🥂"
-                    )
-
-
             else:
-
-                st.warning(
-                    "No encontramos ninguna confirmación "
-                    "con ese nombre."
-                )
-
-
-        else:
-
-            st.info(
-                "La asignación de mesas aún "
-                "no está disponible."
-            )
-
-
-    except FileNotFoundError:
-
-        st.info(
-            "Aún no hay confirmaciones registradas."
-        )
-
-
-# ============================================================
-# PANEL DE ADMINISTRACIÓN
-# ============================================================
-
-st.markdown(
-    "<br><br>",
-    unsafe_allow_html=True
-)
-
-
-with st.expander(
-    "🔐 Panel de Administración (Novios)"
-):
-
-    pin = st.text_input(
-        "Ingresa el PIN de administrador:",
-        type="password"
-    )
-
-
-    if pin == "2026":
-
-        try:
-
-            df_asistentes = pd.read_csv(
-                "asistentes.csv"
-            )
-
-
-            # Crear columna Mesa si no existe
-
-            if "Mesa" not in df_asistentes.columns:
-
-                df_asistentes["Mesa"] = "Por asignar"
-
-                df_asistentes.to_csv(
-                    "asistentes.csv",
-                    index=False
-                )
-
-
-            # ------------------------------------------------
-            # TABLA DE CONFIRMADOS
-            # ------------------------------------------------
-
-            st.subheader(
-                "Lista de Confirmados"
-            )
-
-
-            st.caption(
-                "✍️ Puedes editar el número de mesa "
-                "directamente en la celda de la tabla "
-                "y hacer clic en 'Guardar Cambios'."
-            )
-
-
-            df_edited = st.data_editor(
-                df_asistentes,
-                num_rows="dynamic",
-                use_container_width=True,
-                key="editor_asistentes"
-            )
-
-
-            # ------------------------------------------------
-            # BOTONES DE ADMINISTRACIÓN
-            # ------------------------------------------------
-
-            col_admin1, col_admin2 = st.columns(2)
-
-
-            with col_admin1:
-
-                if st.button(
-                    "💾 Guardar Cambios de la Tabla"
-                ):
-
-                    df_edited.to_csv(
-                        "asistentes.csv",
-                        index=False
-                    )
-
-                    st.success(
-                        "¡Cambios y mesas guardados correctamente!"
-                    )
-
-                    st.rerun()
-
-
-            # ------------------------------------------------
-            # ELIMINAR CONFIRMACIÓN
-            # ------------------------------------------------
-
-            st.markdown("---")
-
-
-            st.subheader(
-                "🗑️ Eliminar una Confirmación"
-            )
-
-
-            if not df_asistentes.empty:
-
-                opciones_borrar = [
-                    f"{idx} - "
-                    f"{row['Nombre']} "
-                    f"({row['Fecha_Registro']})"
-                    for idx, row
-                    in df_asistentes.iterrows()
-                ]
-
-
-                seleccion_borrar = st.selectbox(
-                    "Selecciona la confirmación a eliminar:",
-                    opciones_borrar
-                )
-
-
-                if st.button(
-                    "❌ Eliminar Registro Seleccionado"
-                ):
-
-                    idx_eliminar = int(
-                        seleccion_borrar.split(" - ")[0]
-                    )
-
-
-                    df_asistentes = (
-                        df_asistentes
-                        .drop(index=idx_eliminar)
-                        .reset_index(drop=True)
-                    )
-
-
-                    df_asistentes.to_csv(
-                        "asistentes.csv",
-                        index=False
-                    )
-
-
-                    st.success(
-                        "Registro eliminado exitosamente."
-                    )
-
-
-                    st.rerun()
-
-
-            # ------------------------------------------------
-            # DESCARGAR CSV
-            # ------------------------------------------------
-
-            st.markdown("---")
-
-
-            csv = df_edited.to_csv(
-                index=False
-            ).encode("utf-8")
-
-
-            st.download_button(
-                label="📥 Descargar lista en CSV",
-                data=csv,
-                file_name="asistentes_boda_Ismael_Elizabeth.csv",
-                mime="text/csv",
-            )
-
-
-        except FileNotFoundError:
-
-            st.info(
-                "Aún no hay confirmaciones registradas."
-            )
-
-
-    elif pin != "":
-
-        st.error(
-            "PIN incorrecto."
-        )
+                st.warning("Por favor, ingresa tu nombre antes de enviar.")
