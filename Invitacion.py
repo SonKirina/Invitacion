@@ -54,14 +54,13 @@ st.markdown(
 
     /* Estilo exacto para Ismael & Elizabeth */
     h1, div h1, .titulo-principal {{
-        font-family: 'Playfair Display', serif !important;
-        color: #FDFBF7 !important; /* Blanco cálido / Hueso */
-        font-weight: 500 !important;
-        font-size: 3.5rem !important;
-        text-align: center !important;
-        letter-spacing: 0.5px !important;
-        margin-bottom: 5px !important;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5) !important;
+    color: #FFF8E7 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-weight: 600;
+    font-size: 3.5rem !important;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.65);
     }}
 
     p, span, label, div:not(:has(h1)), b, strong {{
