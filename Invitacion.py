@@ -84,10 +84,10 @@ st.markdown(
              2px  3px 8px rgba(0, 0, 0, 0.65) !important;
     }}
     
-    .card p, .card label, .card strong {
+    .card p, .card label, .card strong {{
         font-family: 'Montserrat', sans-serif !important;
         color: #000000 !important;
-    }
+    }}
 
     /* Tarjetas estilo cristal */
     .card {{
