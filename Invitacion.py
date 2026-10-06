@@ -2,7 +2,6 @@ import base64
 from datetime import datetime
 import pandas as pd
 import streamlit as st
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;600&display=swap');
 
 # Configuración de la página
 st.set_page_config(
@@ -28,6 +27,8 @@ st.markdown(
     f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;600&display=swap');
+
 
     /* Fondo de pantalla directo */
     [data-testid="stAppViewContainer"] {{
