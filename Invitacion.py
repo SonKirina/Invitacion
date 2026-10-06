@@ -85,24 +85,22 @@ st.markdown(
              2px  3px 8px rgba(0, 0, 0, 0.65) !important;
     }}
     
-    /* Da estilo de tarjeta sutil al fondo completo del formulario */
-    [data-testid="stForm"] {{
-        background: rgba(0, 0, 0, 0.15) !important; /* Fondo oscuro elegante con transparencia */
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
+    /* Estilo transparente para los elementos del formulario sin st.form */
+    div[data-testid="stVerticalBlock"] > div:has(input) {{
+        background: rgba(0, 0, 0, 0.20) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
         padding: 20px !important;
         border-radius: 12px !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
     }}
 
-    /* Textos nítidos en blanco sin contorno artificial */
-    [data-testid="stForm"] label, 
-    [data-testid="stForm"] .stWidgetLabel p,
-    [data-testid="stForm"] [data-testid="stRadioButton"] p {{
+    /* Garantizar texto blanco en todos las etiquetas de la sección */
+    label, .stWidgetLabel p, [data-testid="stRadioButton"] p {{
         color: #FFFFFF !important;
         font-family: 'Montserrat', sans-serif !important;
         font-weight: 600 !important;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important; /* Sombra suave de profundidad */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
     }}
     
     /* Tarjetas estilo cristal */
