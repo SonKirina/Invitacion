@@ -53,7 +53,7 @@ st.markdown(
     h1, .titulo-principal, h1 * {{
         color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
         font-family: 'Playfair Display', serif !important;
-        font-weight: 700 !important;
+        font-weight: 800 !important;
         font-size: 3.8rem !important;
         letter-spacing: 1px !important;
         text-align: center !important;
