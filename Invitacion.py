@@ -46,11 +46,12 @@ st.markdown(f"""
         text-align: center;
         font-weight: 600;
     }}
+    
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
     
     h1 {{
         color: #E5E4E2 !important;
-        font-family: 'Poppins', serif !important;
+        font-family: 'Poppins', sans-serif !important;
         text-align: center;
         font-weight: 600;
         font-size: 3rem !important;
