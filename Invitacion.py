@@ -26,7 +26,7 @@ def cargar_svg(path_archivo):
 
 
 # Renderizar en la pantalla
-svg_contenido = cargar_svg("Frame 44.svg")  # pon aquí el nombre de tu archivo
+svg_contenido = cargar_svg("Frame 45.svg")  # pon aquí el nombre de tu archivo
 
 st.markdown(
     f"""
