@@ -1,4 +1,5 @@
 import base64
+import re
 from datetime import datetime
 import pandas as pd
 import streamlit as st
@@ -315,6 +316,14 @@ st.markdown(
 
 with st.form("rsvp_form"):
     nombre = st.text_input("Nombre completo del invitado(a):")
+
+    # Campo de teléfono
+    telefono = st.text_input(
+        "Número de teléfono (10 dígitos):",
+        max_chars=10,
+        placeholder="Ej: 6671234567",
+    )
+
     asistencia = st.radio(
         "¿Nos acompañarás?",
         [
@@ -323,36 +332,85 @@ with st.form("rsvp_form"):
         ],
     )
 
+    acompanantes = st.number_input(
+        "Número de acompañantes adicionales:",
+        min_value=0,
+        max_value=5,
+        step=1,
+    )
+
     restricciones = st.text_input("Alergias o restricciones alimentarias:")
 
     submit_button = st.form_submit_button(label="Enviar Confirmación ✨")
 
     if submit_button:
-        if nombre.strip() == "":
-            st.error("Por favor, ingresa tu nombre completo antes de enviar.")
-        else:
-            nuevo_dato = pd.DataFrame([
-                {
-                    "Fecha_Registro": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    "Nombre": nombre,
-                    "Asistencia": asistencia,
-                    "Acompañantes": acompanantes,
-                    "Restricciones": restricciones,
-                    "Mesa": "Por asignar",
-                }
-            ])
+        # Limpiar espacios en blanco
+        nombre_clean = nombre.strip()
+        telefono_clean = telefono.strip()
 
+        # 1. Validar que el nombre no esté vacío
+        if not nombre_clean:
+            st.error("Por favor, ingresa tu nombre completo antes de enviar.")
+
+        # 2. Validar formato de teléfono (exactamente 10 dígitos)
+        elif not re.fullmatch(r"\d{10}", telefono_clean):
+            st.error(
+                "Por favor, ingresa un número de teléfono válido a 10 dígitos (solo números)."
+            )
+
+        else:
+            # Intentar leer el CSV existente
             try:
                 df = pd.read_csv("asistentes.csv")
-                df = pd.concat([df, nuevo_dato], ignore_index=True)
+                # Asegurar que la columna Telefono se lea como texto para comparar bien
+                if "Telefono" in df.columns:
+                    df["Telefono"] = df["Telefono"].astype(str)
+                else:
+                    df["Telefono"] = ""
             except FileNotFoundError:
-                df = nuevo_dato
-            df.to_csv("asistentes.csv", index=False)
+                df = pd.DataFrame(
+                    columns=[
+                        "Fecha_Registro",
+                        "Nombre",
+                        "Telefono",
+                        "Asistencia",
+                        "Acompañantes",
+                        "Restricciones",
+                        "Mesa",
+                    ]
+                )
 
-            st.balloons()
-            st.success(
-                f"¡Muchas gracias {nombre}! Hemos recibido tu confirmación."
-            )
+            # 3. Validar si el teléfono ya está registrado
+            if (
+                not df.empty
+                and "Telefono" in df.columns
+                and telefono_clean in df["Telefono"].values
+            ):
+                st.warning(
+                    f"El número {telefono_clean} ya ha sido registrado previamente. ¡Gracias!"
+                )
+            else:
+                nuevo_dato = pd.DataFrame([
+                    {
+                        "Fecha_Registro": datetime.now().strftime(
+                            "%Y-%m-%d %H:%M:%S"
+                        ),
+                        "Nombre": nombre_clean,
+                        "Telefono": telefono_clean,
+                        "Asistencia": asistencia,
+                        "Acompañantes": acompanantes,
+                        "Restricciones": restricciones,
+                        "Mesa": "Por asignar",
+                    }
+                ])
+
+                df = pd.concat([df, nuevo_dato], ignore_index=True)
+                df.to_csv("asistentes.csv", index=False)
+
+                st.balloons()
+                st.success(
+                    f"¡Muchas gracias {nombre_clean}! Hemos recibido tu confirmación."
+                )
 
 # ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
