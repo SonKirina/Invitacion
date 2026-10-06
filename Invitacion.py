@@ -47,7 +47,7 @@ st.markdown(f"""
         font-weight: 600;
     }}
 
-h1 {
+    h1 {{
         color: #E5E4E2 !important;
         font-family: 'Cormorant Garamond', serif !important;
         text-align: center;
@@ -55,7 +55,7 @@ h1 {
         font-size: 3rem !important;
         letter-spacing: 2px;
         margin-bottom: 0px !important;
-    }
+        }}
 
     p, span, label, div {{
         font-family: 'Montserrat', sans-serif !important;
