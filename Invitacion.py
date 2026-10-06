@@ -86,7 +86,7 @@ st.markdown(
     
     /* Da estilo de tarjeta sutil al fondo completo del formulario */
     [data-testid="stForm"] {{
-        background: rgba(0, 0, 0, 0.25) !important; /* Fondo oscuro elegante con transparencia */
+        background: rgba(0, 0, 0, 0.15) !important; /* Fondo oscuro elegante con transparencia */
         backdrop-filter: blur(8px) !important;
         -webkit-backdrop-filter: blur(8px) !important;
         padding: 20px !important;
