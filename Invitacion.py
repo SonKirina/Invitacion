@@ -65,7 +65,7 @@ st.markdown(
 
     p, span, label, div:not(:has(h1)), b, strong {{
             font-family: 'Montserrat', sans-serif !important;
-            color: #000000 !important;
+            color: #FFFFFF !important;
     }}
     
     /* Tarjetas estilo cristal */
