@@ -335,17 +335,17 @@ st.markdown("<h2>📸 Nuestra Historia</h2>", unsafe_allow_html=True)
 g_col1, g_col2, g_col3 = st.columns(3)
 with g_col1:
     try:
-        st.image("Kirina.jpeg", use_container_width=True)
+        st.image("Foto_1.jpg", use_container_width=True)
     except Exception:
         st.write("📷 Foto 1")
 with g_col2:
     try:
-        st.image("foto2.jpg", use_container_width=True)
+        st.image("Foto_2.jpg", use_container_width=True)
     except Exception:
         st.write("📷 Foto 2")
 with g_col3:
     try:
-        st.image("foto3.jpg", use_container_width=True)
+        st.image("Foto_3.jpg", use_container_width=True)
     except Exception:
         st.write("📷 Foto 3")
 
