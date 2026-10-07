@@ -545,7 +545,7 @@ st.markdown("<h2>🍽️ Consulta tu Mesa</h2>", unsafe_allow_html=True)
 st.markdown(
     """
 <div class="card">
-    <p style="color: #000000 !important;">Ingresa tu nombre tal como lo registraste para consultar tu mesa asignada.</p>
+    <p class="card-text">Ingresa tu nombre tal como lo registraste para consultar tu mesa asignada.</p>
 </div>
 """,
     unsafe_allow_html=True,
