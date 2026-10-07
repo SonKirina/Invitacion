@@ -205,9 +205,16 @@ st.markdown(
 
 st.markdown(
     """
-<div class="card">
-    <p style="font-size: 1rem; line-height: 1.6; margin: 0; color: #000000 !important;">
-        !NOS CASAMOS! Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más queremos los hace aún más especiales. 
+<div style="
+    background: rgba(0, 0, 0, 0.20) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    text-align: center;">
+    <p style="font-size: 1rem; line-height: 1.6; margin: 0; color: #FFFFFF !important; text-shadow: none !important;">
+        ¡NOS CASAMOS! Hay momentos en la vida que son inolvidables, y compartirlos con las personas que más queremos los hace aún más especiales. 
         Queremos que seas parte de esta gran celebración.
     </p>
 </div>
