@@ -26,16 +26,16 @@ def cargar_svg(path_archivo):
 
 
 # Renderizar en la pantalla
-svg_contenido = cargar_svg("Frame 48.svg")  # pon aquí el nombre de tu archivo
+###svg_contenido = cargar_svg("Frame 48.svg")  # pon aquí el nombre de tu archivo
 
-st.markdown(
-    f"""
-<div style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
-{svg_contenido}
-</div>
-""",
-    unsafe_allow_html=True,
-)
+#st.markdown(
+#    f"""
+#<div style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+#{svg_contenido}
+#</div>
+#""",
+#    unsafe_allow_html=True,
+#)
 
 
 # Carga de imágenes locales
