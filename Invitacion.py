@@ -588,14 +588,41 @@ if nombre_buscar.strip() != "":
 # ----------------- PANEL DE ADMINISTRACIÓN -----------------
 st.markdown("<br><br>", unsafe_allow_html=True)
 with st.expander("🔐 Panel de Administración (Novios)"):
-    pin = st.text_input("Ingresa el PIN de administrador:", type="password")
+    pin = st.text_input("Ingresa el PIN de administrador:", type="password", key="pin_admin")
+    
     if pin == "1812":
         try:
             df_asistentes = pd.read_csv("asistentes.csv")
 
-            if "Mesa" not in df_asistentes.columns:
-                df_asistentes["Mesa"] = "Por asignar"
+            if df_asistentes.empty:
+                st.info("Aún no hay confirmaciones registradas en la lista.")
+            else:
+                if "Mesa" not in df_asistentes.columns:
+                    df_asistentes["Mesa"] = "Por asignar"
 
-            st.dataframe(df_asistentes)
+                st.subheader("📋 Lista de Asistentes")
+                st.dataframe(df_asistentes, use_container_width=True)
+
+                st.markdown("---")
+                st.subheader("🗑️ Eliminar una Confirmación")
+                
+                # Lista de nombres para el desplegable
+                lista_invitados = df_asistentes["Nombre"].tolist()
+                invitado_a_eliminar = st.selectbox(
+                    "Selecciona el invitado que deseas borrar:",
+                    options=lista_invitados,
+                    key="select_eliminar"
+                )
+
+                if st.button("Eliminar Registro ❌", use_container_width=True):
+                    # Filtrar el dataframe quitando la fila del invitado seleccionado
+                    df_asistentes = df_asistentes[df_asistentes["Nombre"] != invitado_a_eliminar]
+                    
+                    # Guardar los cambios en el CSV
+                    df_asistentes.to_csv("asistentes.csv", index=False)
+                    
+                    st.success(f"Se ha eliminado el registro de **{invitado_a_eliminar}** correctamente.")
+                    st.rerun()  # Recarga la app para refrescar la tabla
+
         except FileNotFoundError:
             st.info("No hay lista de asistentes creada aún.")
