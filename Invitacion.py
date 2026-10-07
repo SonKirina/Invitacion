@@ -39,7 +39,7 @@ st.markdown(
 
 
 # Carga de imágenes locales
-fondo_b64 = get_image_base64("Fondo_5.jpg")
+fondo_b64 = get_image_base64("Fondo_5_brillo.jpg")
 
 # Estilo visual avanzado con CSS (TEXTOS EN COLOR NEGRO / OSCURO) Y EFECTO DE PÉTALOS CAYENDO
 st.markdown(
