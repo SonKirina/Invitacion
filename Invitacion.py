@@ -293,20 +293,20 @@ with col1:
 
 with col2:
     st.markdown(
-        """
-        <div class="card">
-            <span class="card-title">🎉 Fiesta</span>
-            <span class="card-date">18 de Diciembre de 2026</span>
-            
-            <p class="card-text"><span class="card-label">Hora:</span> 19:00 hrs</p>
-            <p class="card-text"><span class="card-label">Lugar:</span> Salón Metropolitan: Piso 1</p>
-            <p class="card-text">Culiacán, Sinaloa</p>
-            
-            <a href="https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7943447,-107.4047708,16.67z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="card-link">
-                🗺️ Ubicación de la Fiesta
-            </a>
-        </div>
-        """,
+    """
+    <div class="card">
+    <span class="card-title">🎉 Fiesta</span>
+    <span class="card-date">18 de Diciembre de 2026</span>
+    
+    <p class="card-text"><span class="card-label">Hora:</span> 19:00 hrs</p>
+    <p class="card-text"><span class="card-label">Lugar:</span> Salón Metropolitan: Piso 1</p>
+    <p class="card-text">Culiacán, Sinaloa</p>
+    
+    <a href="https://www.google.com/maps/place/Sal%C3%B3n+Metropolitan/@24.7943447,-107.4047708,16.67z/data=!4m6!3m5!1s0x86bcd0beee3643ff:0xf86e169e6767365b!8m2!3d24.7953022!4d-107.4048423!16s%2Fg%2F1tg7sg73?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="card-link">
+        🗺️ Ubicación de la Fiesta
+    </a>
+    </div>
+    """,
         unsafe_allow_html=True,
     )
 
