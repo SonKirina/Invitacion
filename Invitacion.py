@@ -156,7 +156,7 @@ st.markdown(
     
     /* Detalles (Hora, Lugar, Ciudad) */
     .card-text {{
-        color: #F5F5F5 !important; /* Blanco suave / Gris claro */
+        color: #000000 !important; /* Blanco suave / Gris claro */
         font-family: 'Montserrat', sans-serif !important;
         font-size: 1rem !important;
         margin-bottom: 8px !important;
@@ -165,7 +165,7 @@ st.markdown(
     
     /* Etiquetas resaltadas (Ej. Hora:, Lugar:) */
     .card-label {{
-        color: #C5A059 !important; /* Tono dorado elegante */
+        color: #f5f5f5 !important; /* Tono dorado elegante */
         font-weight: 700 !important;
     }}
     
