@@ -136,7 +136,7 @@ st.markdown(
 
     /* Título principal de la tarjeta (Ej. Ceremonia Religiosa) */
     .card-title {{
-        color: #EEE955 !important; /* Amarillo / Dorado destacado */
+        color: #ffffff !important; /* Amarillo / Dorado destacado */
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 2.2rem !important;
         font-weight: 800 !important;
@@ -146,7 +146,7 @@ st.markdown(
     
     /* Fecha destacada */
     .card-date {{
-        color: #FFFFFF !important; /* Blanco destacado */
+        color: #f5f5f5 !important; /* Blanco destacado */
         font-family: 'Montserrat', sans-serif !important;
         font-size: 1.2rem !important;
         font-weight: 700 !important;
@@ -156,7 +156,7 @@ st.markdown(
     
     /* Detalles (Hora, Lugar, Ciudad) */
     .card-text {{
-        color: #000000 !important; /* Blanco suave / Gris claro */
+        color: #EEE955 !important; /* Blanco suave / Gris claro */
         font-family: 'Montserrat', sans-serif !important;
         font-size: 1rem !important;
         margin-bottom: 20px !important;
@@ -171,7 +171,7 @@ st.markdown(
     
     /* Enlaces (Ej. Ubicación de la Misa) */
     .card-link {{
-        color: #FFFFFF !important;
+        color: #f5f5f5 !important;
         text-decoration: underline !important;
         font-weight: 600 !important;
         font-family: 'Montserrat', sans-serif !important;
