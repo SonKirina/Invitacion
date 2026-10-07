@@ -324,13 +324,6 @@ with g_col3:
 
 
 # ----------------- FORMULARIO RSVP -----------------
-Aquí tienes el código actualizado con el campo de Teléfono Celular del invitado principal y su validación (comprueba que contenga exactamente 10 dígitos numéricos válidos en México):
-
-Python
-import re
-from datetime import datetime
-import pandas as pd
-import streamlit as st
 
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>💌 Confirmación de Asistencia</h2>", unsafe_allow_html=True)
