@@ -159,7 +159,7 @@ st.markdown(
         color: #000000 !important; /* Blanco suave / Gris claro */
         font-family: 'Montserrat', sans-serif !important;
         font-size: 1rem !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 20px !important;
         display: block !important;
     }}
     
