@@ -324,9 +324,6 @@ st.markdown(
     • <span class="card-label">Liverpool:</span> 
     <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/60030339" target="_blank" class="card-text">Ver mesa de regalos aquí</a>
 </p>
-
-<p class="card-text">• Contaremos con lluvia de sobres en la recepción.</p>
-</div>
 """,
     unsafe_allow_html=True,
 )
