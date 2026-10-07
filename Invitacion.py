@@ -142,7 +142,7 @@ st.markdown(
     }}
 
     .card p, .card div, .card span {{
-        color: #FFFFFF !important;
+        color: #000000 !important;
         text-shadow: none !important;
         font-family: 'Montserrat', sans-serif !important;
     }}
