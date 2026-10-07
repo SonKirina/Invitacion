@@ -123,44 +123,61 @@ st.markdown(
         font-weight: 600 !important;
     }}
     
-    /* --- TARJETAS CRISTAL OSCURO (Aplica a todas las .card) --- */
     .card {{
-        background: rgba(0, 0, 0, 0.20) !important;
-        backdrop-filter: blur(6px) !important;
-        -webkit-backdrop-filter: blur(6px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        padding: 24px 20px !important;
-        border-radius: 12px !important;
-        margin-bottom: 20px !important;
-        text-align: center !important;
+    background: rgba(0, 0, 0, 0.20) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding: 24px 20px !important;
+    border-radius: 12px !important;
+    margin-bottom: 20px !important;
+    text-align: center !important;
     }}
 
-    /* Regla general de texto dentro de cards */
-    .card p, .card div, .card span {{
-        color: #ffffff !important;
-        text-shadow: none !important;
-        font-family: 'Montserrat', sans-serif !important;
-        line-height: 1.6 !important;
-    }}
-
-    /* Separación entre párrafos individuales dentro de la card */
-    .card p {{
-        margin-bottom: 12px !important;
-    }}
-
-    .card p:last-child {{
-        margin-bottom: 0 !important; /* El último párrafo no deja espacio abajo */
-    }}
-
-    /* Estilo opcional para destacar títulos/encabezados dentro de la tarjeta */
+    /* Título principal de la tarjeta (Ej. Ceremonia Religiosa) */
     .card-title {{
-        color: #EEE955 !important;
+        color: #EEE955 !important; /* Amarillo / Dorado destacado */
         font-family: 'Cormorant Garamond', serif !important;
-        font-size: 1.4rem !important;
+        font-size: 2.2rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 12px !important;
+        display: block !important;
+    }}
+    
+    /* Fecha destacada */
+    .card-date {{
+        color: #FFFFFF !important; /* Blanco destacado */
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 1.2rem !important;
         font-weight: 700 !important;
-        letter-spacing: 1.5px !important;
         margin-bottom: 14px !important;
         display: block !important;
+    }}
+    
+    /* Detalles (Hora, Lugar, Ciudad) */
+    .card-text {{
+        color: #E0E0E0 !important; /* Blanco suave / Gris claro */
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
+        display: block !important;
+    }}
+    
+    /* Etiquetas resaltadas (Ej. Hora:, Lugar:) */
+    .card-label {{
+        color: #C5A059 !important; /* Tono dorado elegante */
+        font-weight: 700 !important;
+    }}
+    
+    /* Enlaces (Ej. Ubicación de la Misa) */
+    .card-link {{
+        color: #FFFFFF !important;
+        text-decoration: underline !important;
+        font-weight: 600 !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-size: 1.05rem !important;
+        display: inline-block !important;
+        margin-top: 10px !important;
     }}
 
     /* Foto circular principal de los novios */
