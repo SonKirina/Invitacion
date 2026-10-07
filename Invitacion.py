@@ -180,19 +180,6 @@ st.markdown(
         margin-top: 10px !important;
     }}
 
-    /* Foto circular principal de los novios */
-    .hero-photo {{
-        width: 100%;
-        max-width: 300px;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 5px solid #ffffff;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        display: block;
-        margin: 0 auto 20px auto;
-    }}
-
     .countdown-box {{
         background: #1a1a1a;
         color: #ffffff !important;
@@ -288,17 +275,17 @@ st.markdown("<h2>✨ Dónde & Cuándo</h2>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown(
-        """
+   st.markdown(
+    """
     <div class="card">
-        <h3>⛪ Ceremonia Religiosa</h3>
-        <p style="font-size: 1.1rem; font-weight: 600; color: #000000 !important;">18 de Diciembre de 2026</p>
-        <p style="color: #1a1a1a !important;"><b>Hora:</b> 14:00 hrs</p>
-        <p style="color: #1a1a1a !important;"><b>Lugar:</b> Parroquia San Gabriel</p>
-        <p style="font-size: 0.9rem; color: #333333 !important;">Culiacán, Sinaloa</p>
-        <a href="https://www.google.com/maps/place/Parroquia+de+San+Gabriel/@24.8175739,-107.3979117,16.5z/data=!4m6!3m5!1s0x86bcda0885555555:0xe6e996b30a535946!8m2!3d24.8181119!4d-107.4001306!16s%2Fg%2F11cs9_hkf0?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="text-decoration: none;">
-            <p style="color: #000000 !important; font-weight: 700; margin-top: 10px; text-decoration: underline;">🗺️ Ubicación de la Misa</p>
-        </a>
+    <span class="card-title">⛪ Ceremonia Religiosa</span>
+    <span class="card-date">18 de Diciembre de 2026</span>
+    
+    <p class="card-text"><span class="card-label">Hora:</span> 14:00 hrs</p>
+    <p class="card-text"><span class="card-label">Lugar:</span> Parroquia San Gabriel</p>
+    <p class="card-text">Culiacán, Sinaloa</p>
+    
+    <a href="https://maps.google.com" target="_blank" class="card-link">🗺️ Ubicación de la Misa</a>
     </div>
     """,
         unsafe_allow_html=True,
