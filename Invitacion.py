@@ -270,7 +270,7 @@ else:
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 
 # ----------------- DETALLES DEL EVENTO (MISA Y FIESTA) -----------------
-st.markdown("<h2>✨ Dónde & Cuándo</h2>", unsafe_allow_html=True)
+st.markdown("<h2>✨ ¿Dónde & Cuándo?</h2>", unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
 
