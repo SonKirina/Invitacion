@@ -551,7 +551,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-nombre_buscar = st.text_input("Escribe tu nombre:", key="buscar_mesa")
+nombre_buscar = st.text_input("Escribe tu nombre:", key="buscar_mesa_invitado")
 
 if nombre_buscar.strip() != "":
     try:
