@@ -42,63 +42,179 @@ def cargar_svg(path_archivo):
 fondo_b64 = get_image_base64("Fondo_5_brillo.jpg")
 
 # Estilo visual avanzado con CSS (TEXTOS EN COLOR NEGRO / OSCURO) Y EFECTO DE PÉTALOS CAYENDO
-/* --- ESTILOS DE TARJETA Y SUS TEXTOS --- */
-.card {
-    background: rgba(0, 0, 0, 0.20) !important;
-    backdrop-filter: blur(6px) !important;
-    -webkit-backdrop-filter: blur(6px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    padding: 24px 20px !important;
-    border-radius: 12px !important;
-    margin-bottom: 20px !important;
-    text-align: center !important;
-}
+st.markdown(
+    f"""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;600&display=swap');
 
-/* Título principal de la tarjeta (Ej. Ceremonia Religiosa) */
-.card-title {
-    color: #EEE955 !important; /* Amarillo / Dorado destacado */
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 2.2rem !important;
-    font-weight: 800 !important;
-    margin-bottom: 12px !important;
-    display: block !important;
-}
+    /* Fondo de pantalla directo */
+    [data-testid="stAppViewContainer"] {{
+        background-image: url({fondo_b64});
+        background-size: cover;
+        background-position: center 35%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
 
-/* Fecha destacada */
-.card-date {
-    color: #FFFFFF !important; /* Blanco destacado */
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1.2rem !important;
-    font-weight: 700 !important;
-    margin-bottom: 14px !important;
-    display: block !important;
-}
+    [data-testid="stHeader"] {{
+        background-color: rgba(0,0,0,0);
+    }}
 
-/* Detalles (Hora, Lugar, Ciudad) */
-.card-text {
-    color: #E0E0E0 !important; /* Blanco suave / Gris claro */
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1rem !important;
-    margin-bottom: 8px !important;
-    display: block !important;
-}
+    /* --- ENCABEZADOS GLOBALES --- */
+    h4, h4 * {{
+        color: #EEE955 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.3rem !important;
+        font-weight: 800 !important;
+        text-align: center !important;
+    }}
+    
+    h2, h2 * {{
+        color: #FFFFFF !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 2.2rem !important;
+        font-weight: 800 !important;
+        text-align: center !important;
+    }}
 
-/* Etiquetas resaltadas (Ej. Hora:, Lugar:) */
-.card-label {
-    color: #C5A059 !important; /* Tono dorado elegante */
-    font-weight: 700 !important;
-}
+    h3, h3 * {{
+        color: #FFFFFF !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.8rem !important;
+        font-weight: 800 !important;
+        text-align: center !important;
+    }}
+    
+    h1, .titulo-principal, h1 * {{
+        color: #FAF9F6 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-weight: 800 !important;
+        font-size: 3.1rem !important;
+        letter-spacing: 1px !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important;
+        text-shadow: 
+            -0.5px -0.5px 0 #000,  
+             0.5px -0.5px 0 #000,
+            -0.5px  0.5px 0 #000,
+             0.5px  0.5px 0 #000,
+             2px  3px 8px rgba(0, 0, 0, 0.65) !important;
+    }}
 
-/* Enlaces (Ej. Ubicación de la Misa) */
-.card-link {
-    color: #FFFFFF !important;
-    text-decoration: underline !important;
-    font-weight: 600 !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1.05rem !important;
-    display: inline-block !important;
-    margin-top: 10px !important;
-}
+    /* Estilo transparente para los elementos del formulario sin st.form */
+    div[data-testid="stVerticalBlock"] > div:has(input) {{
+        background: rgba(0, 0, 0, 0.20) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }}
+
+    /* Garantizar texto blanco en todas las etiquetas de la sección */
+    label, .stWidgetLabel p, [data-testid="stRadioButton"] p {{
+        color: #FFFFFF !important;
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: 600 !important;
+    }}
+    
+    /* --- TARJETAS CRISTAL OSCURO (Aplica a todas las .card) --- */
+    .card {{
+        background: rgba(0, 0, 0, 0.20) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        padding: 24px 20px !important;
+        border-radius: 12px !important;
+        margin-bottom: 20px !important;
+        text-align: center !important;
+    }}
+
+    /* Regla general de texto dentro de cards */
+    .card p, .card div, .card span {{
+        color: #ffffff !important;
+        text-shadow: none !important;
+        font-family: 'Montserrat', sans-serif !important;
+        line-height: 1.6 !important;
+    }}
+
+    /* Separación entre párrafos individuales dentro de la card */
+    .card p {{
+        margin-bottom: 12px !important;
+    }}
+
+    .card p:last-child {{
+        margin-bottom: 0 !important; /* El último párrafo no deja espacio abajo */
+    }}
+
+    /* Estilo opcional para destacar títulos/encabezados dentro de la tarjeta */
+    .card-title {{
+        color: #EEE955 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 14px !important;
+        display: block !important;
+    }}
+
+    /* Foto circular principal de los novios */
+    .hero-photo {{
+        width: 100%;
+        max-width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid #ffffff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        display: block;
+        margin: 0 auto 20px auto;
+    }}
+
+    .countdown-box {{
+        background: #1a1a1a;
+        color: #ffffff !important;
+        padding: 12px 20px;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        display: inline-block;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }}
+
+    .stButton>button {{
+        background: #000000;
+        color: white !important;
+        border-radius: 25px;
+        width: 100%;
+        font-weight: 600;
+        border: none;
+        padding: 12px;
+        font-size: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }}
+
+    .stButton>button:hover {{
+        background: #333333;
+        transform: translateY(-2px);
+    }}
+
+    .divider {{
+        text-align: center;
+        margin: 25px 0;
+        color: #FFFFFF;
+        font-size: 1.5rem;
+    }}
+    </style>
+""",
+    unsafe_allow_html=True,
+)
 
 # ----------------- ENCABEZADO -----------------
 st.markdown("<br>", unsafe_allow_html=True)
