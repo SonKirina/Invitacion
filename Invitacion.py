@@ -324,6 +324,14 @@ with g_col3:
 
 
 # ----------------- FORMULARIO RSVP -----------------
+Aquí tienes el código actualizado con el campo de Teléfono Celular del invitado principal y su validación (comprueba que contenga exactamente 10 dígitos numéricos válidos en México):
+
+Python
+import re
+from datetime import datetime
+import pandas as pd
+import streamlit as st
+
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>💌 Confirmación de Asistencia</h2>", unsafe_allow_html=True)
 
@@ -341,7 +349,14 @@ with st.container():
     # 1. Nombre principal
     nombre = st.text_input("Nombre completo del invitado(a) principal:")
 
-    # 2. Número de acompañantes (al cambiar este número, Streamlit reacciona de inmediato)
+    # 2. Teléfono celular
+    telefono = st.text_input(
+        "Teléfono celular (10 dígitos):",
+        max_chars=10,
+        placeholder="Ej. 6671234567",
+    )
+
+    # 3. Número de acompañantes
     acompanantes = st.number_input(
         "Número de acompañantes adicionales:",
         min_value=0,
@@ -350,7 +365,7 @@ with st.container():
         value=0,
     )
 
-    # 3. Campos dinámicos para nombres de acompañantes
+    # 4. Campos dinámicos para nombres de acompañantes
     nombres_acompanantes = []
     if acompanantes > 0:
         st.markdown(
@@ -363,7 +378,7 @@ with st.container():
             )
             nombres_acompanantes.append(nombre_acomp)
 
-    # 4. Asistencia y Restricciones
+    # 5. Asistencia y Restricciones
     asistencia = st.radio(
         "¿Nos acompañarás?",
         [
@@ -374,11 +389,12 @@ with st.container():
 
     restricciones = st.text_input("Alergias o restricciones alimentarias:")
 
-    # Botón normal (sustituye al form_submit_button)
+    # Botón normal
     enviar = st.button("Enviar Confirmación ✨", use_container_width=True)
 
     if enviar:
         nombre_clean = nombre.strip()
+        telefono_clean = re.sub(r"\D", "", telefono.strip())  # Solo dígitos
         lista_nombres_acomp = [
             n.strip() for n in nombres_acompanantes if n.strip() != ""
         ]
@@ -387,6 +403,11 @@ with st.container():
         if not nombre_clean:
             st.error(
                 "Por favor, ingresa tu nombre completo antes de enviar la confirmación."
+            )
+
+        elif len(telefono_clean) != 10:
+            st.error(
+                "Por favor, ingresa un número de teléfono celular válido a 10 dígitos (ej. 6671234567)."
             )
 
         elif acompanantes > 0 and len(lista_nombres_acomp) < acompanantes:
@@ -402,6 +423,7 @@ with st.container():
                     columns=[
                         "Fecha_Registro",
                         "Nombre",
+                        "Telefono",
                         "Asistencia",
                         "Acompañantes",
                         "Nombres_Acompañantes",
@@ -409,6 +431,10 @@ with st.container():
                         "Mesa",
                     ]
                 )
+
+            # Asegurar que la columna 'Telefono' exista si el CSV ya se había creado previamente sin ella
+            if "Telefono" not in df.columns:
+                df["Telefono"] = ""
 
             cadena_acompanantes = (
                 ", ".join(lista_nombres_acomp)
@@ -422,6 +448,7 @@ with st.container():
                         "%Y-%m-%d %H:%M:%S"
                     ),
                     "Nombre": nombre_clean,
+                    "Telefono": telefono_clean,
                     "Asistencia": asistencia,
                     "Acompañantes": acompanantes,
                     "Nombres_Acompañantes": cadena_acompanantes,
@@ -448,9 +475,57 @@ with st.container():
                         ¡Muchas gracias <strong>{nombre_clean}</strong>! Hemos recibido tu confirmación.
                     </span>
                 </div>
-                """, 
-                unsafe_allow_html=True
+                """,
+                unsafe_allow_html=True,
             )
+
+# ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
+st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
+st.markdown("<h2>🍽️ Consulta tu Mesa</h2>", unsafe_allow_html=True)
+
+st.markdown(
+    """
+<div class="card">
+    <p style="color: #000000 !important;">Ingresa tu nombre tal como lo registraste para consultar tu mesa asignada.</p>
+</div>
+""",
+    unsafe_allow_html=True,
+)
+
+nombre_buscar = st.text_input("Escribe tu nombre:", key="buscar_mesa")
+
+if nombre_buscar.strip() != "":
+    try:
+        df_mesas = pd.read_csv("asistentes.csv")
+        if "Mesa" in df_mesas.columns:
+            resultado = df_mesas[
+                df_mesas["Nombre"].str.contains(
+                    nombre_buscar, case=False, na=False
+                )
+            ]
+
+            if not resultado.empty:
+                for idx, row in resultado.iterrows():
+                    mesa_asignada = row.get("Mesa", "Aún no asignada")
+                    if (
+                        pd.isna(mesa_asignada)
+                        or str(mesa_asignada).strip() == ""
+                    ):
+                        mesa_asignada = "Por asignar"
+
+                    st.info(
+                        f"👤 **{row['Nombre']}**: Tu mesa asignada es la **Mesa"
+                        f" {mesa_asignada}** 🥂"
+                    )
+            else:
+                st.warning(
+                    "No encontramos ninguna confirmación con ese nombre."
+                )
+        else:
+            st.info("La asignación de mesas aún no está disponible.")
+    except FileNotFoundError:
+        st.info("Aún no hay confirmaciones registradas.")
+        
 # ----------------- BUSCADOR DE MESA PARA INVITADOS -----------------
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>🍽️ Consulta tu Mesa</h2>", unsafe_allow_html=True)
