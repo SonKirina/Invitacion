@@ -317,8 +317,8 @@ st.markdown("<h2>💡 Información Importante</h2>", unsafe_allow_html=True)
 st.markdown(
     """
 <div class="card">
-<h3>🎁 Mesa de Regalos</h3>
-<p class="card-text">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
+<span class="card-title">🎁 Mesa de Regalos</span>
+<p class="card-date">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
 
 <p class="card-text">
     • <span class="card-label">Liverpool:</span> 
