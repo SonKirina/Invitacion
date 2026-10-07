@@ -318,7 +318,7 @@ st.markdown(
     """
 <div class="card">
 <span class="card-title">🎁 Mesa de Regalos</span>
-<p class="card-date">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
+<p class="card-label">Tu presencia es nuestro mejor regalo. Si deseas tener un detalle adicional:</p>
 
 <p class="card-text">
     • <span class="card-label">Liverpool:</span> 
