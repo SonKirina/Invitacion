@@ -49,7 +49,6 @@ st.markdown(
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;600&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;600&display=swap');
 
-
     /* Fondo de pantalla directo */
     [data-testid="stAppViewContainer"] {{
         background-image: url({fondo_b64});
@@ -63,16 +62,15 @@ st.markdown(
         background-color: rgba(0,0,0,0);
     }}
 
-
-    h4 * {{
+    /* --- ENCABEZADOS GLOBALES --- */
+    h4, h4 * {{
         color: #EEE955 !important;
         font-family: 'Cormorant Garamond', serif !important;
-        font-size: 1.2rem !important;
+        font-size: 1.3rem !important;
         font-weight: 800 !important;
         text-align: center !important;
     }}
     
-    /* --- EDITAR H2 INDIVIDUALMENTE --- */
     h2, h2 * {{
         color: #FFFFFF !important;
         font-family: 'Cormorant Garamond', serif !important;
@@ -81,18 +79,16 @@ st.markdown(
         text-align: center !important;
     }}
 
-    /* --- EDITAR H3 INDIVIDUALMENTE --- */
     h3, h3 * {{
-        color: #000000 !important;
+        color: #FFFFFF !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-size: 1.8rem !important;
         font-weight: 800 !important;
         text-align: center !important;
     }}
     
-    /* 2. Título principal */
     h1, .titulo-principal, h1 * {{
-        color: #FAF9F6 !important; /* Blanco marfil / crema cálido */
+        color: #FAF9F6 !important;
         font-family: 'Cormorant Garamond', serif !important;
         font-weight: 800 !important;
         font-size: 3.1rem !important;
@@ -102,8 +98,6 @@ st.markdown(
         margin-left: auto !important;
         margin-right: auto !important;
         display: block !important;
-
-    /* Contorno limpio + sombra suave (sin deformar el trazo interno de la letra) */
         text-shadow: 
             -0.5px -0.5px 0 #000,  
              0.5px -0.5px 0 #000,
@@ -111,7 +105,7 @@ st.markdown(
              0.5px  0.5px 0 #000,
              2px  3px 8px rgba(0, 0, 0, 0.65) !important;
     }}
-    
+
     /* Estilo transparente para los elementos del formulario sin st.form */
     div[data-testid="stVerticalBlock"] > div:has(input) {{
         background: rgba(0, 0, 0, 0.20) !important;
@@ -122,7 +116,7 @@ st.markdown(
         border: 1px solid rgba(255, 255, 255, 0.05) !important;
     }}
 
-    /* Garantizar texto blanco en todos las etiquetas de la sección */
+    /* Garantizar texto blanco en todas las etiquetas de la sección */
     label, .stWidgetLabel p, [data-testid="stRadioButton"] p {{
         color: #FFFFFF !important;
         font-family: 'Montserrat', sans-serif !important;
@@ -135,16 +129,38 @@ st.markdown(
         backdrop-filter: blur(6px) !important;
         -webkit-backdrop-filter: blur(6px) !important;
         border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        padding: 20px !important;
+        padding: 24px 20px !important;
         border-radius: 12px !important;
         margin-bottom: 20px !important;
         text-align: center !important;
     }}
 
+    /* Regla general de texto dentro de cards */
     .card p, .card div, .card span {{
         color: #ffffff !important;
         text-shadow: none !important;
         font-family: 'Montserrat', sans-serif !important;
+        line-height: 1.6 !important;
+    }}
+
+    /* Separación entre párrafos individuales dentro de la card */
+    .card p {{
+        margin-bottom: 12px !important;
+    }}
+
+    .card p:last-child {{
+        margin-bottom: 0 !important; /* El último párrafo no deja espacio abajo */
+    }}
+
+    /* Estilo opcional para destacar títulos/encabezados dentro de la tarjeta */
+    .card-title {{
+        color: #EEE955 !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 1.4rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 14px !important;
+        display: block !important;
     }}
 
     /* Foto circular principal de los novios */
@@ -192,7 +208,7 @@ st.markdown(
     .divider {{
         text-align: center;
         margin: 25px 0;
-        color: #000000;
+        color: #FFFFFF;
         font-size: 1.5rem;
     }}
     </style>
