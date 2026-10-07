@@ -129,16 +129,22 @@ st.markdown(
         font-weight: 600 !important;
     }}
     
-    /* Tarjetas estilo cristal */
+    /* --- TARJETAS CRISTAL OSCURO (Aplica a todas las .card) --- */
     .card {{
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        padding: 25px;
-        border-radius: 15px;
-        margin-bottom: 25px;
-        text-align: center;
+        background: rgba(0, 0, 0, 0.20) !important;
+        backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+        margin-bottom: 20px !important;
+        text-align: center !important;
+    }}
+
+    .card p, .card div, .card span {{
+        color: #FFFFFF !important;
+        text-shadow: none !important;
+        font-family: 'Montserrat', sans-serif !important;
     }}
 
     /* Foto circular principal de los novios */
