@@ -355,19 +355,11 @@ with g_col3:
 st.markdown('<div class="divider">❦ ❦ ❦</div>', unsafe_allow_html=True)
 st.markdown("<h2>💌 Confirmación de Asistencia</h2>", unsafe_allow_html=True)
 
-st.markdown(
-    """
-<div class="card">
-    <p style="color: #000000 !important;">Por favor confirma tu asistencia antes del <b>15 de Noviembre de 2026</b>.</p>
-</div>
-""",
-    unsafe_allow_html=True,
-)
 
 # Creamos un contenedor reactivo que mantendrá la tarjeta transparente
 with st.container():
     # 1. Nombre principal
-    nombre = st.text_input("Nombre completo del invitado(a) principal:")
+    nombre = st.text_input("Nombre completo:")
 
     # 2. Teléfono celular
     telefono = st.text_input(
